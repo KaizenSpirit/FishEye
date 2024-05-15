@@ -2,12 +2,11 @@ async function fetchPhotographers() {
     const api_url = "data/photographers.json";
     const response = await fetch(api_url);
     const photographersJsonFileData = await response.json();
-    const photographers = photographersJsonFileData.photographers;
-    return { photographers: [...photographers] };
+    return photographersJsonFileData.photographers;
 }
 
 async function loadAndDisplayPhotographers() {
-    const { photographers } = await fetchPhotographers();
+    const  photographers  = await fetchPhotographers();
     displayPhotographers(photographers);
 }
 loadAndDisplayPhotographers();
@@ -31,28 +30,29 @@ async function displayPhotographers(photographers) {
 function createPhotographerTemplate(data) {
     const { name, portrait, city, country, tagline, price } = data;
     const picture = `assets/photographers/ID/${portrait}`;
-    const getUserCardDOM = () => {                  
+
+    const getUserCardDOM = () => {
         const article = document.createElement('article');
-        const link = document.createElement('a');
-        link.href = 'photographer.html'; 
-        const img = document.createElement('img');
-        img.src = picture;
-        link.appendChild(img);
-        const h2 = document.createElement('h2');
-        const h3 = document.createElement('h3');
-        const h4 = document.createElement('h4');
-        const h5 = document.createElement('h5');
-        h2.textContent = name;
-        h3.textContent = `${city}, ${country}`;
-        h4.textContent = tagline;
-        h5.textContent = `${price}€/jour`;
-        article.appendChild(link); 
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(h4);
-        article.appendChild(h5);
+
+        // Crée le contenu HTML avec des template literals
+        article.innerHTML = `
+            <a href="photographer.html">
+                <img src="${picture}" alt="${name}">
+            </a>
+            <h2>${name}</h2>
+            <h3>${city}, ${country}</h3>
+            <h4>${tagline}</h4>
+            <h5>${price}€/jour</h5>
+        `;
         return article;
     };
+
     return { name, picture, city, country, tagline, price, getUserCardDOM };
 }
+
+
+
+
+
+
 

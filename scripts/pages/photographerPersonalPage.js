@@ -21,6 +21,8 @@ window.onload = async () => {
 
 // key right and left
 
+// tap + entrée click
+
 
 
 }
