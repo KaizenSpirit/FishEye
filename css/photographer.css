@@ -96,6 +96,21 @@ form textarea{
 }
 
 
+.photo-grid{
+    margin: 100px 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photo-grid img{
+width: 300px;
+margin:30px;
+}
+
+video{
+    width: 500px;
+}
+
 @media (max-width:768px){
     header {
       justify-content: center;
