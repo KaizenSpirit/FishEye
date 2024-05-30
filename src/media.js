@@ -50,7 +50,7 @@ class VideoMedia extends Media {
 }
 
 class MediaFactory {
-  static createMedia(mediaData) {
+  constructor(mediaData) {
     if (mediaData.image) {
       return new ImageMedia(mediaData);
     } else if (mediaData.video) {

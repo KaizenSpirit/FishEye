@@ -28,7 +28,7 @@ function displayDataMedia(media) {
   if (dataContainer) {
     dataContainer.innerHTML = '';
     media.forEach(mediaItem => {
-      const mediaModel = MediaFactory.createMedia(mediaItem);
+      const mediaModel = new MediaFactory(mediaItem);
       const mediaCardDOM = mediaModel.getMediaContentDOM();
       dataContainer.appendChild(mediaCardDOM);
     });
