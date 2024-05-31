@@ -15,7 +15,7 @@ class MediaFactory {
   }
 }
 
-async function init(){
+async function initPhotographer(){
   const urlParams = new URLSearchParams(window.location.search);
   const photographerId = urlParams.get('id');
   
@@ -99,7 +99,7 @@ async function init(){
     } 
   }
 
-  init();
+  initPhotographer();
 
 
 
