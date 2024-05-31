@@ -1,4 +1,4 @@
-import { getPhotographerAndMedias } from './api.js';
+import { getPhotographerAndMedias } from './api/api.js';
 
 class Media {
   constructor({ photographerId, title, likes }) {

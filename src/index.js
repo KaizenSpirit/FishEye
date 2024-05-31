@@ -1,4 +1,4 @@
-import { getPhotographers } from './api.js';
+import { getPhotographers } from './api/api.js';
 
 class PhotographersFactory {
   static createPhotographer(data) {
