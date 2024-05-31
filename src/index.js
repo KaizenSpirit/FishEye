@@ -1,5 +1,7 @@
 import { getPhotographers } from './api/api.js';
 
+
+
 class PhotographersFactory {
   static createPhotographer(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
