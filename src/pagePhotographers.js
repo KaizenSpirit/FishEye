@@ -1,3 +1,6 @@
+import { getPhotographerAndMedias } from './api.js';
+
+
 class Media {
   constructor({ photographerId, title, likes }) {
     this.photographerId = photographerId;
@@ -61,4 +64,46 @@ class MediaFactory {
   }
 }
 
-export { Media, ImageMedia, VideoMedia, MediaFactory };
+
+
+async function init(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const photographerId = urlParams.get('id');
+  
+  if (photographerId) {
+    const { photographer, media } = await getPhotographerAndMedias(parseInt(photographerId, 10));
+    
+    if (photographer) {
+      document.getElementById('nameProfil').textContent = photographer.name;
+      document.getElementById('locationProfil').textContent = `${photographer.city}, ${photographer.country}`;
+      document.getElementById('taglineProfil').textContent = photographer.tagline;
+      document.getElementById('photoProfil').innerHTML = `<img src="assets/photographers/ID/${photographer.portrait}" alt="${photographer.name}">`;
+      displayDataMedia(media);
+    } else {
+      console.error('Photographer not found');
+    }
+  } else {
+    console.error('No photographer ID found in URL');
+  }
+}
+
+
+
+function displayDataMedia(media) {
+  const dataContainer = document.getElementById('dataContainer');
+  if (dataContainer) {
+    dataContainer.innerHTML = '';
+    media.forEach(mediaItem => {
+      const mediaModel = new MediaFactory(mediaItem);
+      const mediaCardDOM = mediaModel.getMediaContentDOM();
+      dataContainer.appendChild(mediaCardDOM);
+
+    });
+  } 
+}
+
+
+init()
+
+
+

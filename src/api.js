@@ -1,4 +1,3 @@
-
 const api_url = "../data/photographers.json";
 
 export async function getPhotographers() {
