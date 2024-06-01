@@ -692,19 +692,37 @@ form input {
   border-radius: 5px;
 }
 
-
-
-.error-message {
-  color: red;
+/* Style pour afficher les messages d'erreur avec un pseudo-élément */
+.formData[data-error]::after {
+  content: attr(data-error);
   font-size: 0.9em;
-  margin-top: 5px;
+  color: red;
   display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
 }
 
 input.error, textarea.error {
   border: 1px solid red;
 }
 
+.close_modale:focus {
+  transform: scale(1.2); /* Agrandir de 20% */
+  transition: transform 0.2s; /* Animation douce pour l'agrandissement */
+}
+
+
+.close_modale:focus {
+  transform: scale(1.2); /* Agrandir de 20% */
+  transition: transform 0.2s; /* Animation douce pour l'agrandissement */
+}
 
 
 
@@ -733,25 +751,32 @@ input.error, textarea.error {
   top: 20px;
   right: 20px;
   color: white;
-  font-size: 30px;
+  font-size: 70px;
+  margin: 0px 30px 10px 0px;
   cursor: pointer;
+}
+
+.close:focus {
+  transform: scale(1.2); /* Agrandir de 20% */
+  transition: transform 0.2s; /* Animation douce pour l'agrandissement */
 }
 
 #lightbox .prev, #lightbox .next {
   position: absolute;
   top: 50%;
   color: white;
-  font-size: 30px;
+  font-size: 70px;
   cursor: pointer;
   transform: translateY(-50%);
 }
 
+
 #lightbox .prev {
-  left: 20px;
+  left: 100px;
 }
 
 #lightbox .next {
-  right: 20px;
+  right: 100px;
 }
 
 #lightbox .lightbox-content {
@@ -777,6 +802,7 @@ input.error, textarea.error {
 .personal-photos .like-button {
   pointer-events: auto;
 }
+
 
 
 

@@ -45,6 +45,15 @@ function displayMedia(medias, price) {
     const mediaElement = mediaCardDOM.querySelector('img, video');
     mediaItems.push(mediaElement);
     mediaCardDOM.addEventListener('click', () => showLightbox(index));
+
+
+    mediaElement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        showLightbox(index);
+      }
+    });
+
+
   });
   addLikeListeners(price, updateTotalLikes);
   updateTotalLikes(price); // Call updateTotalLikes after displaying media

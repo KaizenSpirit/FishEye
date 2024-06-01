@@ -1,12 +1,12 @@
 import { getPhotographers } from './api/api.js';
 import PhotographerFactory from './factories/PhotographerFactory.js'; // Ajout de cette ligne pour importer PhotographerFactory
 
-async function DisplayPhotographers() {
+export async function DisplayPhotographers() {
   const photographers = await getPhotographers();
   renderPhotographers(photographers);
 }
 
-function renderPhotographers(photographers) {
+export function renderPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   photographersSection.innerHTML = ""; // Clear previous entries if any
   photographers.forEach(photographer => {

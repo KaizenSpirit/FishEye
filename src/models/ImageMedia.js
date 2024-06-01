@@ -8,7 +8,7 @@ class ImageMedia extends Media {
 
   generateHTML() {
     return `
-      <img class="img_display" src="${this.image}" alt="${this.title}" title="${this.title}">
+      <img class="img_display" src="${this.image}" alt="${this.title}" title="${this.title}" tabindex="0">
       <div class="personal-photos">
         <p class="photo-details">${this.title}</p>
         <p class="photo-details like-count" data-likes="${this.likes}">${this.likes}</p>

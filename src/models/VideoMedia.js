@@ -8,7 +8,7 @@ class VideoMedia extends Media {
 
   generateHTML() {
     return `
-      <video class="vids" controls src="${this.video}" alt="${this.title}" title="${this.title}"></video>
+      <video class="vids" controls src="${this.video}" alt="${this.title}" title="${this.title}" tabindex="0"></video>
       <div class="personal-photos">
         <p class="photo-details">${this.title}</p>
         <p class="photo-details like-count" data-likes="${this.likes}">${this.likes}</p>
