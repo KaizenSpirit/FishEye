@@ -1,70 +1,73 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
+<html lang="fr">
 
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
-      </a>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/8c5af481df.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/styles.css">
+  <title>Fisheye - photographe</title>
+</head>
 
-    <main id="main">
+<body>
 
-      <div class="photograph-header">
-        <div id="mainFiche">
-            <section class="profil">
-                <div class="textProfil">
-                    <h1 id="nameProfil"></h1>
-                    <span id="locationProfil"></span>
-                    <p id="taglineProfil"></p>
-                    <div id="tagProfil"></div>
-                </div>
-                <button tabindex="0" class="contact_button" id="contactButton">
-                    Contactez-moi
-                </button>
-                <div id="photoProfil"></div>
-            </section>
-        </div> 
-    </div>
+  <header class="photographer-header">
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"></a>
+  </header>
   
-
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img class="close_modale" src="assets/icons/close.svg"/>
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-            <label>Nom</label>
-            <input />
-            <label>Email</label>
-            <input />
-            <label>Votre message</label>
-            <textarea></textarea>
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+  <main id="main">
+    <div class="photograph-header">
+      <div class="photograph-header__bloc-titre">
+        <h1 class="photograph-name"></h1>
+        <p class="photograph-location"></p>
+        <p class="photograph-tagline"></p>
       </div>
-    </div>  
-    
-    <div class="photo-grid" id="dataContainer" role="group">
-      <!-- Photos will be dynamically added here -->
-</div>
+      <button class="contact_button" aria-label="Contact me">Contactez-moi</button>
+    </div>
 
+    <form action="photographer.html" class="order-by">
+      <label for="orderBy" class="order-by__label" aria-label="Order by">Trier par</label>
+      <select name="order" id="orderBy" class="order-by__select">
+          <option value="">--Option--</option>
+          <option value="Popularité" class="order-by__option">Popularité</option>
+          <option value="Date" class="order-by__option">Date</option>
+          <option value="Titre" class="order-by__option">Titre</option>
+      </select>
+  </form>
 
+    <div id="photographer-images"></div>
 
+    <div class="price-and-likes">
+      <div class="total_likes" id="total-likes" role="status" aria-live="polite"></div>
+    </div>
+
+  <section id="contact_modal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <p></p>
+        <img src="assets/icons/close.svg" class="close_modale" tabindex="0" alt="Close Contact form">
+      </header>
+      <form>
+        <label id="prenom_label" for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" tabindex="0" aria-labelledby="prenom_label" aria-label="First name">
+
+        <label id="nom_label" for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" aria-labelledby="nom_label" aria-label="Last name">
+
+        <label id="email_label" for="email">Email :</label>
+        <input type="email" id="email" name="email" required aria-labelledby="email_label" aria-label="Email">
+
+        <label id="message_label" for="message">Votre message :</label>
+        <textarea id="message" name="message" rows="5" required minlength="10" aria-label="Your message"></textarea>
+
+        <button class="contact_send-button" type="submit" aria-label="Send">Envoyer</button>
+      </form>
+    </div>
+  </section>
   </main>
-  <script type="module" src="/src/photographer.js"></script>
-  <script type="module" src="/src/utils/modal.js"></script>
-  </body>
+
+  <script type="module" src="src/photographer.js"></script>
+</body>
 </html>

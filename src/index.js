@@ -1,24 +1,19 @@
 import { getPhotographers } from './api/api.js';
-import { PhotographersFactory} from './factories/PhotographersFactory.js'
+import PhotographerFactory from './factories/PhotographerFactory.js'; // Ajout de cette ligne pour importer PhotographerFactory
 
-async function loadAndDisplayPhotographers() {
+async function DisplayPhotographers() {
   const photographers = await getPhotographers();
-  displayPhotographers(photographers);
+  renderPhotographers(photographers);
 }
 
-async function displayPhotographers(photographers) {
-  const photographersSection = document.querySelector(".photographers_section");
-  if (photographersSection) {
-    photographers.forEach(photographer => {
-      const photographerModel = PhotographersFactory.createPhotographer(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
-      photographersSection.appendChild(userCardDOM);
-      userCardDOM.addEventListener('click', () => {
-        window.location.href = 'photographer.html';
-      });
-    });
-  } 
-  
+function renderPhotographers(photographers) {
+  const photographersSection = document.querySelector(".photographer_section");
+  photographersSection.innerHTML = ""; // Clear previous entries if any
+  photographers.forEach(photographer => {
+    const photographerModel = PhotographerFactory.createPhotographer(photographer);
+    const userCardDOM = photographerModel.getUserCardDOM();
+    photographersSection.appendChild(userCardDOM);
+  });
 }
 
-loadAndDisplayPhotographers();
+DisplayPhotographers();

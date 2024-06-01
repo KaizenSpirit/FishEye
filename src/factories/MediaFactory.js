@@ -1,9 +1,8 @@
-import { getPhotographerAndMedias } from '../api/api.js';
 import ImageMedia from '../models/ImageMedia.js';
 import VideoMedia from '../models/VideoMedia.js';
 
-export default class MediaFactory {
-  constructor(mediaData) {
+class MediaFactory {
+  static create(mediaData) {
     if (mediaData.image) {
       return new ImageMedia(mediaData);
     } else if (mediaData.video) {
@@ -13,3 +12,5 @@ export default class MediaFactory {
     }
   }
 }
+
+export default MediaFactory;
