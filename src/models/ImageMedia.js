@@ -1,5 +1,4 @@
 import Media from './Media.js';
-
 class ImageMedia extends Media {
   constructor(data) {
     super(data);
@@ -18,5 +17,4 @@ class ImageMedia extends Media {
       </div>`;
   }
 }
-
 export default ImageMedia;

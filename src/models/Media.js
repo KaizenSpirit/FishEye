@@ -1,3 +1,4 @@
+
 class Media {
   constructor({ id, photographerId, title, likes, date, price, image, video }) {
     this.id = id;

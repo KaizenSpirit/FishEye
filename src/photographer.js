@@ -1,11 +1,11 @@
-import { getPhotographerAndMedias, getPhotographers } from './api/api.js';
-import PhotographerFactory from './factories/PhotographerFactory.js';
+import { getPhotographerAndMedias } from './api/api.js';
 import MediaFactory from './factories/MediaFactory.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
-import { sortMediaBy, addSortEventListener } from './utils/sort.js';
+import { addSortEventListener } from './utils/sort.js';
 import { addLikeListeners } from './utils/addLikes.js';
-import { updateTotalLikes } from './utils/updateLikes.js'; // Assurez-vous que cette ligne est présente
+import { updateTotalLikes } from './utils/updateLikes.js'; 
+
 
 async function fetchAndDisplayPhotographerDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -13,7 +13,6 @@ async function fetchAndDisplayPhotographerDetails() {
 
   if (photographerId) {
     const { photographer, media } = await getPhotographerAndMedias(parseInt(photographerId, 10));
-    
     if (photographer) {
       document.querySelector('.photograph-name').textContent = photographer.name;
       document.querySelector('.photograph-location').textContent = `${photographer.city}, ${photographer.country}`;
@@ -22,22 +21,19 @@ async function fetchAndDisplayPhotographerDetails() {
       img.setAttribute('src', `./assets/photographers/ID/${photographer.portrait}`);
       img.setAttribute('alt', photographer.name);
       document.querySelector('.photograph-header').appendChild(img);
-      displayMedia(media, photographer.price); // Passez le prix ici
+      displayMedia(media, photographer.price);
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
       updateTotalLikes(photographer.price); 
     } else {
       console.error('Photographer not found');
     }
-  } else {
-    const photographers = await getPhotographers();
-    renderPhotographers(photographers);
   }
 }
 
 function displayMedia(medias, price) {
   const imagesContainer = document.getElementById('photographer-images');
   imagesContainer.innerHTML = "";
-  mediaItems.length = 0; // Clear mediaItems before adding new items
+  mediaItems.length = 0; 
   medias.forEach((mediaItem, index) => {
     const mediaModel = MediaFactory.create(mediaItem);
     const mediaCardDOM = mediaModel.getMediaContentDOM();
@@ -45,18 +41,39 @@ function displayMedia(medias, price) {
     const mediaElement = mediaCardDOM.querySelector('img, video');
     mediaItems.push(mediaElement);
     mediaCardDOM.addEventListener('click', () => showLightbox(index));
-
-
     mediaElement.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         showLightbox(index);
+      } else if (event.key === 'ArrowRight') {
+        focusNextMedia(index);
+      } else if (event.key === 'ArrowLeft') {
+        focusPreviousMedia(index);
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        focusMedia(event.key);
       }
     });
-
-
   });
   addLikeListeners(price, updateTotalLikes);
-  updateTotalLikes(price); // Call updateTotalLikes after displaying media
+  updateTotalLikes(price);
 }
 
+function focusNextMedia(currentIndex) {//Paramètre: currentIndex - l'index actuel de l'élément focusé dans mediaItems.
+  const nextIndex = (currentIndex + 1) % mediaItems.length;
+  mediaItems[nextIndex].focus();
+}
+
+function focusPreviousMedia(currentIndex) {
+  const previousIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
+  mediaItems[previousIndex].focus();
+}
+
+function focusMedia(key) {
+  const focusedElement = document.activeElement;
+  const currentIndex = mediaItems.indexOf(focusedElement);
+  if (currentIndex !== -1) {
+    if (key === 'ArrowUp' || key === 'ArrowRight') {
+      focusNextMedia(currentIndex);
+    } 
+  }
+}
 fetchAndDisplayPhotographerDetails();

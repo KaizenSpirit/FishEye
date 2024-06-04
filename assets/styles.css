@@ -271,6 +271,9 @@ main label {
 
 
 
+
+
+
   /*-------------------
     ------ Likes ------
     -------------------
@@ -500,10 +503,11 @@ html {
   
 header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin-top: 40px;
     padding: 0 7rem;
 }
 
@@ -562,6 +566,24 @@ text-decoration: none;
 
 .photographer_section article a{
     text-decoration: none;
+}
+
+@media screen and (max-width: 760px) {
+.photograph-header{
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+}
+
+.photographer_section {
+  grid-template-columns: 1fr;
+}
+}
+
+
+
+.photograph-header__bloc-titre{
+  margin-bottom: 30px;
 }
 
 .photograph-name{
@@ -737,7 +759,10 @@ input.error, textarea.error {
 
 
 
-
+.media-container{
+  display: flex;
+  justify-content: center;
+}
 
 /* CSS pour la lightbox */
 #lightbox {
@@ -796,8 +821,8 @@ input.error, textarea.error {
 
 #lightbox .media-container img,
 #lightbox .media-container video {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 60%;
+  max-width: 66%;
 }
 
 
@@ -810,6 +835,37 @@ input.error, textarea.error {
   pointer-events: auto;
 }
 
+
+
+
+.lightbox .lightbox-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.lightbox .lightbox-media {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lightbox .lightbox-media img,
+.lightbox .lightbox-media video {
+  max-width: 100%;
+  max-height: 70%;
+  display: block;
+  margin: 250px auto 0px auto;
+}
+
+.lightbox .lightbox-title {
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  padding: 5px 254px;
+  border-radius: 5px;
+}
 
 
 

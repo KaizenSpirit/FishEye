@@ -1,5 +1,5 @@
-import Media from './Media.js';
 
+import Media from './Media.js';
 class VideoMedia extends Media {
   constructor(data) {
     super(data);
@@ -20,3 +20,4 @@ class VideoMedia extends Media {
 }
 
 export default VideoMedia;
+
