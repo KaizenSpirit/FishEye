@@ -7,8 +7,6 @@ class Media {
     this.likes = likes;
     this.date = date;
     this.price = price;
-    this.image = image ? `./assets/photographers/medias/${image}` : null;
-    this.video = video ? `./assets/photographers/medias/${video}` : null;
   }
 
   getMediaContentDOM() {
