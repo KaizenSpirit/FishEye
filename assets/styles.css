@@ -886,8 +886,9 @@ input.error, textarea.error {
 
 
 
-
-
+.no-scroll {
+  overflow: hidden;
+}
 
 
 

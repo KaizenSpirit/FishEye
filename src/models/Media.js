@@ -9,7 +9,7 @@ class Media {
     this.price = price;
   }
 
-  getMediaContentDOM() {
+  getMediaContentDOM() {      //Essayer de changer cela comme le mentor l'a fait ?
     const figure = document.createElement('figure');
     figure.innerHTML = this.generateHTML();
     return figure;
