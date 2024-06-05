@@ -240,11 +240,16 @@ main label {
   #photographer-images figure span,
   #photographer-images figure i{
     font-size: 1.3rem;
-    color: #901c52;
+    color: rgb(37, 32, 32);
+    font-weight: 100;
     transition: color 0.1s ease-in-out;
     margin: 4px 10px 0px 0px;
   }
   
+  #photographer-images figure i.liked {
+    color: #901c1c;
+    font-weight: 900;
+  }
   #photographer-images figure i{
     cursor: pointer;
     margin-left: 10px;
@@ -253,10 +258,15 @@ main label {
   #photographer-images figure i:hover{
     cursor: pointer;
     transform: scale(1.2);    
-    transition: .7s;
+    transition: .9s;
   }
 
-  
+  #photographer-images figure i:active{
+    transform: scale(1);   
+    transition: 0.01s; 
+
+  }
+
   #photographer-images figure span{
     bottom: 0.65rem;
     right: 1.75rem;
