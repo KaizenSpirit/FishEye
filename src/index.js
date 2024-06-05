@@ -9,7 +9,7 @@ export function renderPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   photographersSection.innerHTML = ""; 
   photographers.forEach(photographer => {
-    const photographerModel = PhotographerFactory.createPhotographer(photographer);
+    const photographerModel = new PhotographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });

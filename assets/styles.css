@@ -21,7 +21,8 @@ html {
 }
 .photographer-header{
   display: flex;
-  margin: 2rem 5rem;
+  margin-left: -30px;
+
 
 }
 .photograph-header {
@@ -503,7 +504,7 @@ html {
   
 header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
@@ -569,6 +570,12 @@ text-decoration: none;
 }
 
 @media screen and (max-width: 760px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+
+}
+
 .photograph-header{
   display: flex;
   flex-direction: column;
