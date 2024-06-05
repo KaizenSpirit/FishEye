@@ -35,7 +35,7 @@ function displayMedia(medias, price) {
   imagesContainer.innerHTML = "";
   mediaItems.length = 0; 
   medias.forEach((mediaItem, index) => {
-    const mediaModel = MediaFactory.create(mediaItem);
+    const mediaModel = new MediaFactory(mediaItem);
     const mediaCardDOM = mediaModel.getMediaContentDOM();
     imagesContainer.appendChild(mediaCardDOM);
     const mediaElement = mediaCardDOM.querySelector('img, video');

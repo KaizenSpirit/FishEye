@@ -2,7 +2,7 @@
 import ImageMedia from '../models/ImageMedia.js';
 import VideoMedia from '../models/VideoMedia.js';
 class MediaFactory {
-  static create(mediaData) {
+  constructor(mediaData) {
     if (mediaData.image) {
       return new ImageMedia(mediaData);
     } else if (mediaData.video) {
