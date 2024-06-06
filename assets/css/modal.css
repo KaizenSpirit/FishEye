@@ -1,0 +1,159 @@
+
+
+
+#contact_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 450px;
+  height: 700px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  margin: auto auto;
+  animation: modalopen 0.5s;
+  margin-top: 60px;
+  padding-bottom: 25px;
+
+}
+
+#contact_modal header{
+position: relative;
+}
+
+#contact_modal h2, #contact_modal p{
+text-align: left;
+margin: -70px 0 0 0;
+font-size: 3rem;
+}
+
+#contact_modal img{
+position: absolute;
+top: -1.5rem;
+right: 0;
+}
+
+#message{
+width: 95%;
+margin-bottom: 1rem;
+font-size: 1.5rem;
+resize: none;  
+height: 7rem;
+}
+
+#message_label{
+margin-bottom: 5px;
+}
+
+form input {
+  margin: 0.3rem 0 0.3rem 0;
+  width: 95%;
+  height: 2.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3rem;
+}
+
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal header img {
+  cursor: pointer;
+  height: 30px;
+}
+
+.modal header h2 {
+  font-size: 1.8rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  color: #312E2E;
+  font-size: 1.6rem;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.9em;
+  color: red;
+  display: block;
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  margin-bottom: -20px;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+input.error, textarea.error {
+  border: 1px solid red;
+}
+
+.close_modale:focus {
+  transform: scale(1.2); 
+  transition: transform 0.2s; 
+}
+
+
+.close_modale:focus {
+  transform: scale(1.2); 
+  transition: transform 0.2s; 
+}
+
+.logo {
+  height: 50px;
+
+}
+
+.close_modale{
+margin: 5px 105px 0px 0px;
+} 
+
+
+
+
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}

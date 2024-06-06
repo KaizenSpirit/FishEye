@@ -19,6 +19,9 @@ html {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+
 .photographer-header{
   display: flex;
   margin-left: -30px;
@@ -65,103 +68,15 @@ html {
   color: black;
 }
 
-.close_modale{
-margin-right: 105px;
-}
 
-/*--------------------
-  ------ Modale ------
-  --------------------
-*/
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 669px;
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    margin: auto;
-    animation: modalopen 0.3s;
-    
-  }
-#contact_modal header{
-  position: relative;
-  /* display: flex; */
-}
 
-#contact_modal h2, #contact_modal p{
-  text-align: left;
-  margin: 0;
-  font-size: 4.5rem;
-}
-#contact_modal img{
-  position: absolute;
-  top: 1.5rem;
-  right: 0;
-}
 
-#message{
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  resize: none;
-}
 
-form input{
-  margin: 0.3rem 0 0.3rem 0;
-  font-size: 2rem;
-}
 
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
 
-.modal header img {
-    cursor: pointer;
-}
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
 
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
-}
-.logo {
-    height: 50px;
-    /* margin: 2rem 5rem; */
-
-}
 
 .photograph-name{
     color: #D3573C;
@@ -310,6 +225,11 @@ main label {
 }
 
 
+
+
+
+
+
 /* sort  */
 
 .contact_button,
@@ -350,108 +270,6 @@ select {
       margin-bottom: 20px;
   }
 
-
-
-
-
-
-
-
-
-
-/*--------------------
-  ------ Modale ------
-  --------------------
-*/
-
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 669px;
-  height: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  margin: auto;
-  animation: modalopen 0.3s;
-  
-}
-#contact_modal header{
-position: relative;
-/* display: flex; */
-}
-
-#contact_modal h2, #contact_modal p{
-text-align: left;
-margin: 0;
-font-size: 4.5rem;
-}
-#contact_modal img{
-position: absolute;
-top: 1.5rem;
-right: 0;
-}
-
-#message{
-width: 100%;
-margin-bottom: 1rem;
-font-size: 2rem;
-resize: none;
-}
-
-form input{
-margin: 0.3rem 0 0.3rem 0;
-font-size: 2rem;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312E2E;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
-}
-.logo {
-  height: 50px;
-  /* margin: 2rem 5rem; */
-
-}
 
 .photograph-name{
   color: #D3573C;
@@ -496,13 +314,7 @@ form input {
 
 
 
-
-
-
-
-
-
-/* @import url("photographer.css"); */
+/* 
 html {
     box-sizing: border-box;
     margin: 0 auto;
@@ -510,7 +322,7 @@ html {
     min-width: 350px;
     max-width: 1440px;
     max-height: 1024px;
-  }
+  } */
   
 header {
     display: flex;
@@ -634,141 +446,6 @@ text-decoration: none;
 
 
 
-
-
-
-
-
-
-
-
-
-/* modale */
-
-
-
-
-
-/*--------------------
-  ------ Modale ------
-  --------------------
-*/
-
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 669px;
-  height: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  margin: auto;
-  animation: modalopen 0.3s;
-  
-}
-#contact_modal header{
-position: relative;
-/* display: flex; */
-}
-
-#contact_modal h2, #contact_modal p{
-text-align: left;
-margin: 0;
-font-size: 4.5rem;
-}
-#contact_modal img{
-position: absolute;
-top: 1.5rem;
-right: 0;
-}
-
-#message{
-width: 100%;
-margin-bottom: 1rem;
-font-size: 2rem;
-resize: none;
-}
-
-form input{
-margin: 0.3rem 0 0.3rem 0;
-font-size: 2rem;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312E2E;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
-}
-
-/* Style pour afficher les messages d'erreur avec un pseudo-élément */
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.9em;
-  color: red;
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  text-align: left;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-
-input.error, textarea.error {
-  border: 1px solid red;
-}
-
-.close_modale:focus {
-  transform: scale(1.2); /* Agrandir de 20% */
-  transition: transform 0.2s; /* Animation douce pour l'agrandissement */
-}
-
-
-.close_modale:focus {
-  transform: scale(1.2); /* Agrandir de 20% */
-  transition: transform 0.2s; /* Animation douce pour l'agrandissement */
-}
 
 
 
