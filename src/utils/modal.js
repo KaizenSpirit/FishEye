@@ -1,5 +1,4 @@
 
-
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   if (modal) {

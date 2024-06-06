@@ -28,8 +28,6 @@ function showLightbox(index) {
     videoElement.focus();
     addVideoKeyboardControls(videoElement);
   }
-
-  document.body.classList.add('no-scroll');
 }
 
 function closeLightbox() {
@@ -46,7 +44,6 @@ function closeLightbox() {
   if (videoElement) {
     removeVideoKeyboardControls(videoElement);
   }
-  document.body.classList.remove('no-scroll');
 }
 
 function showPrevMedia() {

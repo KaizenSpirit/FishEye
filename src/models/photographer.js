@@ -1,6 +1,5 @@
 class Photographer {
   constructor(data) {
-    // Initialisation des propriétés de l'objet avec les données fournies
     this.name = data.name;
     this.portrait = data.portrait;
     this.city = data.city;
@@ -9,20 +8,19 @@ class Photographer {
     this.price = data.price;
     this.id = data.id;
 
-    // Chemin de l'image du photographe
     this.picture = `./assets/photographers/ID/${this.portrait}`;
 
-    // Fonction pour obtenir la carte utilisateur en DOM
     this.getUserCardDOM = () => {
       const article = document.createElement('article');
+      article.classList.add('photographer-article', `photographer-${this.id}`);
       article.innerHTML = `
         <a href="photographer.html?id=${this.id}">
-          <img src="${this.picture}" alt="${this.name}">
-          <h2 class="photograph-name">${this.name}</h2>
+          <img class="photographer-img photographer-${this.id}-img" src="${this.picture}" alt="${this.name}">
         </a>
-        <h3 class="photograph-location">${this.city}, ${this.country}</h3>
-        <h4 class="photograph-tagline">${this.tagline}</h4>
-        <h5 class="photograph-price">${this.price}€/jour</h5>
+         <h2 class="photograph-name photographer-${this.id}-name">${this.name}</h2>
+        <h3 class="photograph-location photographer-${this.id}-location">${this.city}, ${this.country}</h3>
+        <h4 class="photograph-tagline photographer-${this.id}-tagline">${this.tagline}</h4>
+        <h5 class="photograph-price photographer-${this.id}-price">${this.price}€/jour</h5>
       `;
       return article;
     };

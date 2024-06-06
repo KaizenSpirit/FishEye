@@ -1,0 +1,40 @@
+
+/* sort  */
+
+.contact_button,
+select {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.order-by__select{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.order-by__select{
+  font-size: 25px;
+}
+.order-by__option{
+  font-size: 25px;
+}
+.order-by{
+   margin-top: 60px;
+   flex-direction: column;
+   margin-left: 50px;
+  }
+  .order-by__label{
+      margin: 0 0 20px 30px;
+  }
+  .order-by__select{
+      margin-left: 30px;
+      margin-bottom: 20px;
+  }

@@ -1,0 +1,125 @@
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.photographer_section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.photographer_section article a{
+  text-decoration: none;
+  overflow: hidden;
+  height: 210px;
+  width: 210px;
+  border-radius: 50%;
+  overflow:hidden;
+}
+
+.photographer_section article img {
+    display: block;
+    width: 290px;
+    height: 270px;
+}
+
+
+ /* photgraphers photos by id  */
+.photographer-243 .photographer-img{
+object-fit: cover;
+width: 300px;
+object-position: 60% 60%;
+transform: translateX(-41px);
+}
+
+.photographer-930 .photographer-img{
+object-fit: cover;
+width: 530px;
+object-position: 70% 50%;
+transform: translateX(-160px);
+}
+
+.photographer-82 .photographer-img{
+object-fit: cover;
+width: 250px;
+object-position: 0% 50%;
+transform: translateY(-25px);
+}
+
+.photographer-527 .photographer-img{
+  object-fit: cover;
+width: 250px;
+object-position: 50% 50%;
+transform: translateX(-20px)
+}
+
+.photographer-925 .photographer-img{
+object-fit: cover;
+width: 500px;
+object-position: 50% 40%;
+transform: translateX(-150px);
+}
+
+.photographer-195 .photographer-img{
+object-fit: cover;
+width: 480px;
+object-position: 0% 60%;
+transform: translateX(-135px);
+}
+
+
+
+
+
+/* titles  */
+.photograph-header__bloc-titre{
+  margin-bottom: 30px;
+}
+
+.photograph-name{
+    color: #D3573C;
+    font-size: 2.3rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.photograph-location{
+    color: #901c1c;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+}
+.photograph-tagline{
+    color: black;
+    font-size: 0.63rem;
+    margin: 7px 0 0 0;
+}
+.photograph-price{
+    color: #757575;
+    font-size: 0.6rem;
+    margin: 7px 0 0 0 ;
+}
+
+
+
+
+@media screen and (max-width: 760px) {
+
+  header{
+    margin-top: 3rem;
+  }
+  h1{
+   width: 400px;
+   text-align: center;
+  }
+  .photographer_section {
+    margin-top: 6rem;
+    grid-template-columns: 1fr;
+  }
+  }
