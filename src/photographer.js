@@ -17,7 +17,8 @@ async function fetchAndDisplayPhotographerDetails() {
       document.querySelector('.photograph-name').textContent = photographer.name;
       document.querySelector('.photograph-location').textContent = `${photographer.city}, ${photographer.country}`;
       document.querySelector('.photograph-tagline').textContent = photographer.tagline;
-
+      document.querySelector('#contact_modal .photographer-name').textContent = photographer.name;
+      
       // Utilisation d'un template literal pour créer le lien et l'image
       const photographerHeader = document.querySelector('.photograph-header');
       const imgHTML = `

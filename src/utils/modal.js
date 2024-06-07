@@ -58,10 +58,10 @@ const lastNameRegex = /^[a-zA-Z0-9-]{2,15}$/;
 const emailRegex = /^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,25}$/;
 
 // Messages d'erreur
-const firstNameErrorMessage = "Veuillez entrer un prénom compris entre 2 et 15 caractères";
-const lastNameErrorMessage = "Veuillez entrer un nom compris entre 2 et 15 caractères";
-const emailErrorMessage = "Adresse email invalide.";
-const messageErrorMessage = "Votre message doit comporter au moins 10 caractères";
+const firstNameErrorMessage = "Prénom entre 2 et 15 caractères";
+const lastNameErrorMessage = "Nom entre 2 et 15 caractères";
+const emailErrorMessage = "Adresse email invalide";
+const messageErrorMessage = " Dix caractères minimum";
 
 // Fonction de validation des champs
 function isInputsValidated(inputElement, regex, errorMessage) {
