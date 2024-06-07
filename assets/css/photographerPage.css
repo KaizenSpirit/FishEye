@@ -1,0 +1,130 @@
+/* photographer header  */
+
+.photograph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 5rem;
+  padding: 0 2rem;
+}
+
+.phtograph-header .photograph-header__bloc-titre{
+  margin-bottom: 30px;
+}
+
+.photograph-header .photograph-name{
+margin-top: -20px;
+font-size: 3.5rem;
+font-weight: lighter;
+color: #D3573C;
+text-align: center;
+}
+
+.photograph-header .photograph-location{
+  color: #901c1c;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-top: -10px;
+}
+.photograph-header .photograph-tagline{
+  color: black;
+  font-size: 1rem;
+  margin: 20px 0 0 0;
+}
+
+
+/* contact button  */
+
+.contact_button, .contact_send-button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact_button:hover{
+background-color: #db8876;
+color: black;
+}
+
+.photograph-header a{
+  text-decoration: none;
+  overflow: hidden;
+  height: 210px;
+  width: 210px;
+  border-radius: 50%;
+  overflow:hidden;
+}
+
+.photograph-header a .photograph-243-img{
+  object-fit: cover;
+  width: 300px;
+  transform: translateY(-81px) translateX(-50px);
+}
+
+.photograph-930-img{
+object-fit: cover;
+width: 530px;
+transform: translateX(-160px) translateY(-40px);
+}
+
+.photograph-82-img{
+object-fit: cover;
+width: 250px;
+object-position: 50% 50%;
+transform: translateY(-10px);
+}
+
+.photograph-527-img{
+object-fit: cover;
+width: 250px;
+object-position: 50% 50%;
+transform: translateX(-20px) translateY(-60px); 
+}
+
+.photograph-925-img{
+object-fit: cover;
+width: 500px;
+object-position: 50% 40%;
+transform: translateX(-150px) translateY(-20px);
+}
+
+.photograph-195-img{
+object-fit: cover;
+width: 480px;
+object-position: 0% 60%;
+transform: translateX(-135px);
+}
+
+
+
+
+
+@media screen and (max-width: 1160px) {
+  .photograph-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+    height: 600px;
+    margin: 0 5rem;
+    padding: 0 2rem 1.6rem;
+  }
+ 
+  .photograph-header__bloc-titre{
+    padding-top: 30px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  }
+  
+  }

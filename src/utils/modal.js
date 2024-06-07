@@ -1,4 +1,3 @@
-
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   if (modal) {
@@ -46,9 +45,6 @@ function enablePageFocus() {
     }
   });
 }
-
-
-
 
 // Sélecteurs des champs de formulaire
 const firstNameInput = document.getElementById('prenom');
@@ -134,9 +130,13 @@ function handleFormSubmit(event) {
       message: messageInput.value,
     };
     console.log(formData);
+
+    // Réinitialiser le formulaire
+    event.target.reset();
+
     closeModal();
-  }else{
-    console.log("formdata invalide")
+  } else {
+    console.log("formdata invalide");
   }
 }
 
@@ -151,4 +151,3 @@ document.querySelector(".close_modale")?.addEventListener('keydown', (event) => 
 document.querySelector('#contact_modal form')?.addEventListener('submit', handleFormSubmit);
 
 export { displayModal, closeModal };
-

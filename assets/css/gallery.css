@@ -1,0 +1,102 @@
+
+#sort-images-select option {
+  padding: 2rem;
+}
+
+main label {
+  font-weight: bold;
+}
+
+#photographer-images {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+#photographer-images img, #photographer-images video {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  /* padding-top: 1rem; */
+  margin-top: 1rem;
+}
+#photographer-images figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 5rem;
+
+}
+
+main figcaption {
+  font-size: 1.5rem;
+  color: #901c1c;
+  max-width: 290px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem 0 0.5rem 0;
+  
+}
+.lightbox figcaption {
+  font-size: 1.5rem;
+  color: #901c1c;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+#photographer-images figure span,
+#photographer-images figure i{
+  font-size: 1.3rem;
+  color: rgb(37, 32, 32);
+  font-weight: 100;
+  transition: color 0.1s ease-in-out;
+  margin: 4px 10px 0px 0px;
+}
+
+#photographer-images figure i.liked {
+  color: #901c1c;
+  font-weight: 900;
+}
+#photographer-images figure i{
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#photographer-images figure i:hover{
+  cursor: pointer;
+  transform: scale(1.2);    
+  transition: .9s;
+}
+
+#photographer-images figure i:active{
+  transform: scale(1);   
+  transition: 0.01s; 
+
+}
+
+#photographer-images figure span{
+  bottom: 0.65rem;
+  right: 1.75rem;
+  font-weight: bold;
+}
+/* #photographer-images figure div{
+  display: flex;
+} */
+
+figure{
+  margin: 0;
+}
+
+
+
+@media screen and (max-width: 1160px) {
+
+  #photographer-images {
+ justify-content: center;
+  }
+  }

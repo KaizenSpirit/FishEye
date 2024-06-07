@@ -74,9 +74,6 @@ transform: translateX(-135px);
 }
 
 
-
-
-
 /* titles  */
 .photograph-header__bloc-titre{
   margin-bottom: 30px;
@@ -105,8 +102,6 @@ transform: translateX(-135px);
     font-size: 0.6rem;
     margin: 7px 0 0 0 ;
 }
-
-
 
 
 @media screen and (max-width: 760px) {

@@ -17,10 +17,23 @@ async function fetchAndDisplayPhotographerDetails() {
       document.querySelector('.photograph-name').textContent = photographer.name;
       document.querySelector('.photograph-location').textContent = `${photographer.city}, ${photographer.country}`;
       document.querySelector('.photograph-tagline').textContent = photographer.tagline;
-      const img = document.createElement('img');
-      img.setAttribute('src', `./assets/photographers/ID/${photographer.portrait}`);
-      img.setAttribute('alt', photographer.name);
-      document.querySelector('.photograph-header').appendChild(img);
+
+      // Utilisation d'un template literal pour créer le lien et l'image
+      const photographerHeader = document.querySelector('.photograph-header');
+      const imgHTML = `
+        <a href="#photographer-images">
+          <img 
+            src="./assets/photographers/ID/${photographer.portrait}" 
+            alt="${photographer.name}" 
+            class="photograph-img photograph-${photographer.id}-img"
+          />
+        </a>
+      `;
+      
+      // Insérer l'image après le bloc de titre existant
+      photographerHeader.insertAdjacentHTML('beforeend', imgHTML);
+
+      // Afficher les médias et ajouter les écouteurs d'événements
       displayMedia(media, photographer.price);
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
       updateTotalLikes(photographer.price); 

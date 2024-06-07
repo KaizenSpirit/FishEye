@@ -38,15 +38,10 @@ position: relative;
 
 #contact_modal h2, #contact_modal p{
 text-align: left;
-margin: -70px 0 0 0;
+margin: -50px 0 0 0;
 font-size: 3rem;
 }
 
-#contact_modal img{
-position: absolute;
-top: -1.5rem;
-right: 0;
-}
 
 #message{
 width: 95%;
@@ -54,6 +49,7 @@ margin-bottom: 1rem;
 font-size: 1.5rem;
 resize: none;  
 height: 7rem;
+border-radius: 5px;
 }
 
 #message_label{
@@ -72,11 +68,14 @@ form input {
 .modal header {
   justify-content: space-between;
   width: 100%;
-}
+} 
 
 .modal header img {
+  position: absolute;
+  right: 0;
   cursor: pointer;
   height: 30px;
+  margin-top: -42px;
 }
 
 .modal header h2 {
