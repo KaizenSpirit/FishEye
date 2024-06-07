@@ -5,3 +5,21 @@
 @import url("sortMenu.css");
 @import url("photographerPage.css");
 @import url("gallery.css");
+@import url("priceAndLikes.css");
+@import url("lightbox.css");
+
+
+html {
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: "DM Sans", sans-serif;
+  min-width: 350px;
+  max-width: 1440px;
+  max-height: 1024px;
+}
+
+
+h1 {
+  color: #901C1C;
+}
+

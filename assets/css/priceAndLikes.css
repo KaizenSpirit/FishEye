@@ -1,0 +1,20 @@
+
+.price-and-likes{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: #db8876;
+  color: black;
+  font-weight: bold;
+  width: 300px;
+  border-radius: 5px 5px 0 0;
+  font-size: 1.5rem;
+}
+.total_likes::after{
+  content: "\f004";
+  font-family: "fontawesome";
+  padding-left: 0.5rem;
+}

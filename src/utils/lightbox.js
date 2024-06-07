@@ -1,45 +1,70 @@
-
-// événement de navigation au clavier 
 let mediaItems = [];
 let currentMediaIndex = 0;
+
+function trapFocus(element) {
+  const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  const firstFocusableElement = element.querySelectorAll(focusableElements)[0];
+  const focusableContent = element.querySelectorAll(focusableElements);
+  const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+  element.addEventListener('keydown', function(event) {
+    const isTabPressed = event.key === 'Tab' || event.keyCode === 9;
+
+    if (!isTabPressed) {
+      return;
+    }
+
+    if (event.shiftKey) {
+      if (document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus(); 
+        event.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastFocusableElement) {
+        firstFocusableElement.focus(); 
+        event.preventDefault();
+      }
+    }
+  });
+}
 
 function showLightbox(index) {
   currentMediaIndex = index;
   const media = mediaItems[currentMediaIndex];
   lightboxContent.innerHTML = `
     <div class="lightbox-media">
+      <span class="close" tabindex="0">&times;</span>
       ${media.outerHTML}
       <div class="lightbox-title">${media.getAttribute('title')}</div>
     </div>
   `;
 
   lightbox.style.display = 'flex';
+  document.body.classList.add('no-scroll'); 
 
-  // Disable focusable elements in the gallery
   disableGalleryFocus();
 
-  // Add keyboard event listeners
   document.addEventListener('keydown', handleKeyDown);
+  trapFocus(lightbox);
 
-  // Add focus to the video element if it exists
   const videoElement = lightboxContent.querySelector('video');
   if (videoElement) {
     videoElement.setAttribute('controls', 'controls');
     videoElement.focus();
     addVideoKeyboardControls(videoElement);
   }
+
+  addCloseButtonEvent();
 }
 
 function closeLightbox() {
   lightbox.style.display = 'none';
+  document.body.classList.remove('no-scroll'); // Retire la classe pour réactiver le défilement
 
-  // Enable focusable elements in the gallery
   enableGalleryFocus();
 
-  // Remove keyboard event listeners
   document.removeEventListener('keydown', handleKeyDown);
 
-  // Remove keyboard controls from the video element if it exists
   const videoElement = lightboxContent.querySelector('video');
   if (videoElement) {
     removeVideoKeyboardControls(videoElement);
@@ -96,7 +121,6 @@ function handleVideoKeyDown(event) {
   const videoElement = event.target;
   switch (event.key) {
     case ' ':
-      // Toggle play/pause on spacebar press
       if (videoElement.paused) {
         videoElement.play();
       } else {
@@ -104,15 +128,12 @@ function handleVideoKeyDown(event) {
       }
       break;
     case 'm':
-      // Mute/unmute on 'm' press
       videoElement.muted = !videoElement.muted;
       break;
     case 'ArrowUp':
-      // Increase volume on ArrowUp press
       videoElement.volume = Math.min(videoElement.volume + 0.1, 1);
       break;
     case 'ArrowDown':
-      // Decrease volume on ArrowDown press
       videoElement.volume = Math.max(videoElement.volume - 0.1, 0);
       break;
   }
@@ -122,30 +143,33 @@ const lightbox = document.createElement('div');
 lightbox.id = 'lightbox';
 lightbox.classList.add('lightbox');
 lightbox.innerHTML = `
-  <span class="close" tabindex="0">&times;</span>  
-  <span class="prev" tabindex="0">&#10094;</span>
   <div class="lightbox-content">
+    <span class="prev" tabindex="0">&#10094;</span>
     <div class="media-container"></div>
-  </div> 
-  <span class="next" tabindex="0">&#10095;</span>
+    <span class="next" tabindex="0">&#10095;</span>
+  </div>
 `;
 document.body.appendChild(lightbox);
 
 const lightboxContent = lightbox.querySelector('.media-container');
-const closeBtn = lightbox.querySelector('.close');
 const prevBtn = lightbox.querySelector('.prev');
 const nextBtn = lightbox.querySelector('.next');
 
-closeBtn.addEventListener('click', closeLightbox);
+
+function addCloseButtonEvent() {
+  const closeBtn = lightboxContent.querySelector('.close');
+  closeBtn.addEventListener('click', closeLightbox);
+  closeBtn.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      closeLightbox();
+    }
+  });
+}
+
 prevBtn.addEventListener('click', showPrevMedia);
 nextBtn.addEventListener('click', showNextMedia);
 
-// Add keyboard accessibility for buttons
-closeBtn.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    closeLightbox();
-  }
-});
+
 prevBtn.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' || event.key === ' ') {
     showPrevMedia();
