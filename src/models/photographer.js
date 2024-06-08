@@ -7,7 +7,6 @@ class Photographer {
     this.tagline = data.tagline;
     this.price = data.price;
     this.id = data.id;
-
     this.picture = `./assets/photographers/ID/${this.portrait}`;
 
     this.getUserCardDOM = () => {

@@ -10,12 +10,17 @@ class Media {
     this.video = video;
   }
 
-  getMediaContentDOM() {      //Essayer de changer cela comme le mentor l'a fait ?
-    const figure = document.createElement('figure');
-    figure.innerHTML = this.generateHTML();
-    return figure;
+  getMediaContentDOM() {
+    const htmlString = this.generateHTML();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    return doc.body.firstChild;
   }
-
 }
 
 export default Media;
+
+
+
+
+

@@ -6,7 +6,6 @@ import { addSortEventListener } from './utils/sort.js';
 import { addLikeListeners } from './utils/addLikes.js';
 import { updateTotalLikes } from './utils/updateLikes.js'; 
 
-
 async function fetchAndDisplayPhotographerDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const photographerId = urlParams.get('id');
@@ -43,30 +42,42 @@ async function fetchAndDisplayPhotographerDetails() {
     }
   }
 }
-
 function displayMedia(medias, price) {
   const imagesContainer = document.getElementById('photographer-images');
   imagesContainer.innerHTML = "";
   mediaItems.length = 0; 
+  
   medias.forEach((mediaItem, index) => {
     const mediaModel = new MediaFactory(mediaItem);
-    const mediaCardDOM = mediaModel.getMediaContentDOM();
+    const htmlString = mediaModel.generateHTML();
+    
+    // Utilisation de DOMParser pour convertir la chaîne HTML en éléments DOM
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    const mediaCardDOM = doc.body.firstChild;
+    
     imagesContainer.appendChild(mediaCardDOM);
     const mediaElement = mediaCardDOM.querySelector('img, video');
-    mediaItems.push(mediaElement);
-    mediaCardDOM.addEventListener('click', () => showLightbox(index));
-    mediaElement.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        showLightbox(index);
-      } else if (event.key === 'ArrowRight') {
-        focusNextMedia(index);
-      } else if (event.key === 'ArrowLeft') {
-        focusPreviousMedia(index);
-      } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-        focusMedia(event.key);
-      }
-    });
+    
+    if (mediaElement) {
+      mediaItems.push(mediaElement);
+      mediaCardDOM.addEventListener('click', () => showLightbox(index));
+      mediaElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          showLightbox(index);
+        } else if (event.key === 'ArrowRight') {
+          focusNextMedia(index);
+        } else if (event.key === 'ArrowLeft') {
+          focusPreviousMedia(index);
+        } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+          focusMedia(event.key);
+        }
+      });
+    } else {
+      console.error('No media element found for:', mediaItem);
+    }
   });
+  
   addLikeListeners(price, updateTotalLikes);
   updateTotalLikes(price);
 }

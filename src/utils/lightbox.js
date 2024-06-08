@@ -9,11 +9,9 @@ function trapFocus(element) {
 
   element.addEventListener('keydown', function(event) {
     const isTabPressed = event.key === 'Tab' || event.keyCode === 9;
-
     if (!isTabPressed) {
       return;
     }
-
     if (event.shiftKey) {
       if (document.activeElement === firstFocusableElement) {
         lastFocusableElement.focus(); 
@@ -32,8 +30,8 @@ function showLightbox(index) {
   currentMediaIndex = index;
   const media = mediaItems[currentMediaIndex];
   lightboxContent.innerHTML = `
-    <div class="lightbox-media">
-      <span class="close" aria-label="Close dialog tabindex="0">&times;</span>
+    <div aria-label="Close dialog" class="lightbox-media">
+      <span class="close" tabindex="0">&times;</span>
       ${media.outerHTML}
       <div class="lightbox-title">${media.getAttribute('title')}</div>
     </div>
@@ -41,30 +39,23 @@ function showLightbox(index) {
 
   lightbox.style.display = 'flex';
   document.body.classList.add('no-scroll'); 
-
   disableGalleryFocus();
-
   document.addEventListener('keydown', handleKeyDown);
   trapFocus(lightbox);
-
   const videoElement = lightboxContent.querySelector('video');
   if (videoElement) {
     videoElement.setAttribute('controls', 'controls');
     videoElement.focus();
     addVideoKeyboardControls(videoElement);
   }
-
   addCloseButtonEvent();
 }
 
 function closeLightbox() {
   lightbox.style.display = 'none';
   document.body.classList.remove('no-scroll'); // Retire la classe pour réactiver le défilement
-
   enableGalleryFocus();
-
   document.removeEventListener('keydown', handleKeyDown);
-
   const videoElement = lightboxContent.querySelector('video');
   if (videoElement) {
     removeVideoKeyboardControls(videoElement);
@@ -144,9 +135,9 @@ lightbox.id = 'lightbox';
 lightbox.classList.add('lightbox');
 lightbox.innerHTML = `
   <div class="lightbox-content">
-    <span class="prev" tabindex="0" aria-label="Previous image">&#10094;</span>
+    <span class="prev" tabindex="0">&#10094;</span>
     <div class="media-container"></div>
-    <span class="next" tabindex="0" aria-label="Next image">&#10095;</span>
+    <span class="next" tabindex="0">&#10095;</span>
   </div>
 `;
 document.body.appendChild(lightbox);
@@ -182,6 +173,3 @@ nextBtn.addEventListener('keydown', (event) => {
 });
 
 export { showLightbox, mediaItems };
-
-
-

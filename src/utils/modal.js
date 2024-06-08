@@ -3,7 +3,6 @@ function displayModal() {
   if (modal) {
     modal.style.display = "block";
     disablePageFocus();
-
     // Add keyboard event listeners
     document.addEventListener('keydown', handleModalKeyDown);
   } else {
@@ -16,7 +15,6 @@ function closeModal() {
   if (modal) {
     modal.style.display = "none";
     enablePageFocus();
-
     // Remove keyboard event listeners
     document.removeEventListener('keydown', handleModalKeyDown);
   } else {

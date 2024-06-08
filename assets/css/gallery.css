@@ -43,7 +43,7 @@ h2, p{
 main figcaption {
   font-size: 1.5rem;
   color: #901c1c;
-  max-width: 290px;
+  max-width: 345px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -99,6 +99,7 @@ figure{
 .personal-photos{
   display: flex;
   justify-content: space-between;
+  width: 400px;
  }
  
  .likes{
