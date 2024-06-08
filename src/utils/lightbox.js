@@ -33,7 +33,7 @@ function showLightbox(index) {
   const media = mediaItems[currentMediaIndex];
   lightboxContent.innerHTML = `
     <div class="lightbox-media">
-      <span class="close" tabindex="0">&times;</span>
+      <span class="close" aria-label="Close dialog tabindex="0">&times;</span>
       ${media.outerHTML}
       <div class="lightbox-title">${media.getAttribute('title')}</div>
     </div>
@@ -144,9 +144,9 @@ lightbox.id = 'lightbox';
 lightbox.classList.add('lightbox');
 lightbox.innerHTML = `
   <div class="lightbox-content">
-    <span class="prev" tabindex="0">&#10094;</span>
+    <span class="prev" tabindex="0" aria-label="Previous image">&#10094;</span>
     <div class="media-container"></div>
-    <span class="next" tabindex="0">&#10095;</span>
+    <span class="next" tabindex="0" aria-label="Next image">&#10095;</span>
   </div>
 `;
 document.body.appendChild(lightbox);
@@ -182,3 +182,6 @@ nextBtn.addEventListener('keydown', (event) => {
 });
 
 export { showLightbox, mediaItems };
+
+
+
