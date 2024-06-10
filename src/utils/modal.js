@@ -22,6 +22,7 @@ function closeModal() {
   }
 }
 
+
 function handleModalKeyDown(event) {
   if (event.key === 'Escape') {
     closeModal();
@@ -43,6 +44,17 @@ function enablePageFocus() {
     }
   });
 }
+const modalEnd = document.querySelector('#contact-modal-end'); 
+
+function displayModalEnd(){  
+  modalEnd.style.display = "block";
+}
+
+modalEnd.addEventListener('click',closeModalEnd)
+function closeModalEnd(){
+  modalEnd.style.display = "none";
+}
+
 
 // Sélecteurs des champs de formulaire
 const firstNameInput = document.getElementById('prenom');
@@ -130,6 +142,7 @@ function handleFormSubmit(event) {
     event.target.reset();
 
     closeModal();
+    displayModalEnd()
   } else {
     console.log("formdata invalide");
   }

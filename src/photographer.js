@@ -17,6 +17,7 @@ async function fetchAndDisplayPhotographerDetails() {
       document.querySelector('.photograph-location').textContent = `${photographer.city}, ${photographer.country}`;
       document.querySelector('.photograph-tagline').textContent = photographer.tagline;
       document.querySelector('#contact_modal .photographer-name').textContent = photographer.name;
+      document.querySelector('#contact-modal-end .photographer-name').textContent = photographer.name;
       
       // Utilisation d'un template literal pour créer le lien et l'image
       const photographerHeader = document.querySelector('.photograph-header');
@@ -29,7 +30,7 @@ async function fetchAndDisplayPhotographerDetails() {
           />
         </a>
       `;
-      
+      //Mettre ceci dans le modèle photographer  thumbnail
       // Insérer l'image après le bloc de titre existant
       photographerHeader.insertAdjacentHTML('beforeend', imgHTML);
 
@@ -48,7 +49,7 @@ function displayMedia(medias, price) {
   mediaItems.length = 0; 
   
   medias.forEach((mediaItem, index) => {
-    const mediaModel = new MediaFactory(mediaItem);
+    const mediaModel = new MediaFactory(mediaItem); // Plus obligé de le faire ici car se fait dans l'API
     const htmlString = mediaModel.generateHTML();
     
     // Utilisation de DOMParser pour convertir la chaîne HTML en éléments DOM

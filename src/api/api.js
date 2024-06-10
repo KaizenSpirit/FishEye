@@ -13,3 +13,4 @@ export async function getPhotographerAndMedias(photographerId) {
   const media = data.media.filter(m => m.photographerId === photographerId);
   return { photographer, media };
 }
+//Retourner un objet en utilisant le modèle photographer et pareil pour Media

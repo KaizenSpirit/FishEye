@@ -101,7 +101,7 @@ form div {
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.9em;
-  color: red;
+  color: #500101;
   display: block;
   text-align: left;
   opacity: 0;
