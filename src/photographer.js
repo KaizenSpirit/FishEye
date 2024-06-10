@@ -92,13 +92,19 @@ function focusPreviousMedia(currentIndex) {
   mediaItems[previousIndex].focus();
 }
 
+
 function focusMedia(key) {
   const focusedElement = document.activeElement;
   const currentIndex = mediaItems.indexOf(focusedElement);
   if (currentIndex !== -1) {
     if (key === 'ArrowUp' || key === 'ArrowRight') {
       focusNextMedia(currentIndex);
-    } 
+    } else if (key === 'ArrowDown' || key === 'ArrowLeft') {
+      focusPreviousMedia(currentIndex);
+    }
   }
 }
 fetchAndDisplayPhotographerDetails();
+
+
+

@@ -110,14 +110,11 @@ messageInput.addEventListener('blur', () => {
 });
 
 function handleFormSubmit(event) {
-  event.preventDefault(); // Empêcher la soumission par défaut du formulaire
-
+  event.preventDefault(); 
   const isFirstNameValid = isInputsValidated(firstNameInput, firstNameRegex, firstNameErrorMessage);
   const isLastNameValid = isInputsValidated(lastNameInput, lastNameRegex, lastNameErrorMessage);
   const isEmailValid = isInputsValidated(emailInput, emailRegex, emailErrorMessage);
   const isMessageValid = isMessageValidated(messageInput, messageErrorMessage);
-
-  // Vérifier si tous les champs sont valides
   const isFormValid = isFirstNameValid && isLastNameValid && isEmailValid && isMessageValid;
 
   if (isFormValid) {
