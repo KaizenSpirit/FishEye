@@ -1,5 +1,6 @@
 let mediaItems = [];
 let currentMediaIndex = 0;
+let currentGalleryElement = null; //1.//////////////////////// Variable pour stocker l'élément de la galerie actuel
 
 const lightbox = document.createElement('div');
 lightbox.id = 'lightbox';
@@ -19,6 +20,7 @@ const nextBtn = lightbox.querySelector('.next');
 
 function showLightbox(index) {
   currentMediaIndex = index;
+  currentGalleryElement = mediaItems[currentMediaIndex]; //2.//////////////////////////////////////// Enregistrer l'élément actuel de la galerie
   const media = mediaItems[currentMediaIndex];
   lightboxContent.innerHTML = `
     <div aria-label="Close dialog" class="lightbox-media">
@@ -73,6 +75,9 @@ function closeLightbox() {
   const videoElement = lightboxContent.querySelector('video');
   if (videoElement) {
     removeVideoKeyboardControls(videoElement);
+  }
+  if (currentGalleryElement) {
+    currentGalleryElement.focus(); //3./////////////////////////////// Restaurer le focus sur l'élément de la galerie
   }
 }
 
