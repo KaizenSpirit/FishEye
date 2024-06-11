@@ -2,7 +2,7 @@ import { getPhotographerAndMedias } from './api/api.js';
 import MediaFactory from './factories/MediaFactory.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
-import { addSortEventListener } from './utils/sort.js';
+import { addSortEventListener, sortMediaBy } from './utils/sort.js';
 import { addLikeListeners } from './utils/addLikes.js';
 import { updateTotalLikes } from './utils/updateLikes.js'; 
 import  Photographer  from './models/photographer.js'
@@ -16,7 +16,11 @@ async function fetchAndDisplayPhotographerDetails() {
       const photographerInstance = new Photographer(photographer);
       photographerInstance.updatePhotographerDetails();
       photographerInstance.insertPhotographerImage();
-      displayMedia(media, photographer.price);
+          // Trier les médias par popularité avant de les afficher
+          const sortedMedia = sortMediaBy('likes', media);
+          displayMedia(sortedMedia, photographer.price);
+          // Mettre à jour la valeur du select sur "Popularité"
+          document.getElementById('orderBy').value = 'Popularité';
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
       updateTotalLikes(photographer.price);
     } else {
