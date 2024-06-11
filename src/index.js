@@ -5,6 +5,7 @@ export async function DisplayPhotographers() {
   const photographers = await getPhotographers();
   renderPhotographers(photographers);
 }
+
 export function renderPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   photographersSection.innerHTML = ""; 
