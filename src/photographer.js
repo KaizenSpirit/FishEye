@@ -1,11 +1,10 @@
 import { getPhotographerAndMedias } from './api/api.js';
-import MediaFactory from './factories/MediaFactory.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
 import { addSortEventListener, sortMediaBy } from './utils/sort.js';
 import { addLikeListeners } from './utils/addLikes.js';
 import { updateTotalLikes } from './utils/updateLikes.js'; 
-import  Photographer  from './models/photographer.js'
+import Photographer from './models/photographer.js';
 
 async function fetchAndDisplayPhotographerDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -16,11 +15,11 @@ async function fetchAndDisplayPhotographerDetails() {
       const photographerInstance = new Photographer(photographer);
       photographerInstance.updatePhotographerDetails();
       photographerInstance.insertPhotographerImage();
-          // Trier les médias par popularité avant de les afficher
-          const sortedMedia = sortMediaBy('likes', media);
-          displayMedia(sortedMedia, photographer.price);
-          // Mettre à jour la valeur du select sur "Popularité"
-          document.getElementById('orderBy').value = 'Popularité';
+      // Trier les médias par popularité avant de les afficher
+      const sortedMedia = sortMediaBy('likes', media);
+      displayMedia(sortedMedia, photographer.price);
+      // Mettre à jour la valeur du select sur "Popularité"
+      document.getElementById('orderBy').value = 'Popularité';
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
       updateTotalLikes(photographer.price);
     } else {
@@ -34,8 +33,7 @@ function displayMedia(medias, price) {
   imagesContainer.innerHTML = "";
   mediaItems.length = 0; 
   medias.forEach((mediaItem, index) => {
-    const mediaModel = new MediaFactory(mediaItem); // Plus obligé de le faire ici car se fait dans l'API
-    const htmlString = mediaModel.generateHTML();
+    const htmlString = mediaItem.generateHTML();
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, 'text/html');
     const mediaCardDOM = doc.body.firstChild;
@@ -59,12 +57,12 @@ function displayMedia(medias, price) {
       console.error('No media element found for:', mediaItem);
     }
   });
-  
+
   addLikeListeners(price, updateTotalLikes);
   updateTotalLikes(price);
 }
 
-function focusNextMedia(currentIndex) {//Paramètre: currentIndex - l'index actuel de l'élément focusé dans mediaItems.
+function focusNextMedia(currentIndex) {
   const nextIndex = (currentIndex + 1) % mediaItems.length;
   mediaItems[nextIndex].focus();
 }
@@ -85,7 +83,9 @@ function focusMedia(key) {
     }
   }
 }
+
 fetchAndDisplayPhotographerDetails();
+
 
 
 
