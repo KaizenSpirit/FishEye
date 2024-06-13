@@ -1,12 +1,8 @@
 import { getPhotographers } from './api/api.js';
 import Photographer from './models/photographer.js'; 
 
-export async function DisplayPhotographers() {
+export async function renderPhotographers() {
   const photographers = await getPhotographers();
-  renderPhotographers(photographers);
-}
-
-export function renderPhotographers(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   photographersSection.innerHTML = ""; 
   photographers.forEach(photographer => {
@@ -16,4 +12,4 @@ export function renderPhotographers(photographers) {
   });
 }
 
-DisplayPhotographers();
+renderPhotographers();
