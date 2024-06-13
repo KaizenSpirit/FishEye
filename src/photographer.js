@@ -2,8 +2,7 @@ import { getPhotographerAndMedias } from './api/api.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
 import { addSortEventListener, sortMediaBy } from './utils/sort.js';
-import { addLikeListeners } from './utils/addLikes.js';
-import { updateTotalLikes } from './utils/updateLikes.js'; 
+import { addLikeListeners, updateTotalLikes } from './utils/likes.js';
 import Photographer from './models/photographer.js';
 
 async function fetchAndDisplayPhotographerDetails() {
