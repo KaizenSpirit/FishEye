@@ -116,7 +116,7 @@ form div {
 }
 
 input.error, textarea.error {
-  border: 1px solid red;
+  border: 1px solid #500101;;
 }
 
 .close_modale:focus {

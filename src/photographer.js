@@ -3,7 +3,6 @@ import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
 import { addSortEventListener, sortMediaBy } from './utils/sort.js';
 import { addLikeListeners, updateTotalLikes } from './utils/likes.js';
-import Photographer from './models/photographer.js';
 
 async function fetchAndDisplayPhotographerDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -11,9 +10,8 @@ async function fetchAndDisplayPhotographerDetails() {
   if (photographerId) {
     const { photographer, media } = await getPhotographerAndMedias(parseInt(photographerId, 10));
     if (photographer) {
-      const photographerInstance = new Photographer(photographer);
-      photographerInstance.updatePhotographerDetails();
-      photographerInstance.insertPhotographerImage();
+      photographer.updatePhotographerDetails();
+      photographer.insertPhotographerImage();
       // Trier les médias par popularité avant de les afficher
       const sortedMedia = sortMediaBy('likes', media);
       displayMedia(sortedMedia, photographer.price);
