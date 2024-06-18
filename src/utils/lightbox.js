@@ -2,21 +2,26 @@ let mediaItems = [];
 let currentMediaIndex = 0;
 let currentGalleryElement = null;
 
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox';
-lightbox.classList.add('lightbox');
-lightbox.innerHTML = `
-  <div class="lightbox-content">
-    <span class="prev" tabindex="0" aria-label="Previous media">&#10094;</span>
-    <div class="media-container"></div>
-    <span class="next" tabindex="0" aria-label="Next media">&#10095;</span>
-  </div>
-`;
+const lightbox = createLightbox();
 document.body.appendChild(lightbox);
 
 const lightboxContent = lightbox.querySelector('.media-container');
 const prevBtn = lightbox.querySelector('.prev');
 const nextBtn = lightbox.querySelector('.next');
+
+function createLightbox() {
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.classList.add('lightbox');
+  lightbox.innerHTML = `
+    <div class="lightbox-content">
+      <span class="prev" tabindex="0" aria-label="Previous media">&#10094;</span>
+      <div class="media-container"></div>
+      <span class="next" tabindex="0" aria-label="Next media">&#10095;</span>
+    </div>
+  `;
+  return lightbox;
+}
 
 function showLightbox(index, retainFocus = false) {
   currentMediaIndex = index;
@@ -31,23 +36,14 @@ function showLightbox(index, retainFocus = false) {
   `;
   lightbox.style.display = 'flex';
   document.body.classList.add('no-scroll');
-  disableGalleryFocus();
+  toggleGalleryFocus(false);
+  focusMediaElement(); 
   document.addEventListener('keydown', handleKeyDown);
   trapFocus(lightbox);
 
-  const videoElement = lightboxContent.querySelector('video');
-  const imageElement = lightboxContent.querySelector('img');
-  
   if (!retainFocus) {
-    if (videoElement) {
-      videoElement.setAttribute('controls', 'controls');
-      videoElement.focus();
-    } else if (imageElement) {
-      imageElement.setAttribute('tabindex', '0');
-      imageElement.focus();
-    }
+    focusMediaElement();
   }
-
   addCloseButtonEvent();
 }
 
@@ -57,18 +53,12 @@ function trapFocus(element) {
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
   element.addEventListener('keydown', function(event) {
-    if (event.key !== 'Tab' && event.keyCode !== 9) {
-      return;
-    }
+    if (event.key !== 'Tab') return;
 
-    if (event.shiftKey) {
-      // Shift + Tab
-      if (document.activeElement === firstFocusableElement) {
-        lastFocusableElement.focus();
-        event.preventDefault();
-      }
-    } else if (document.activeElement === lastFocusableElement) {
-      // Tab
+    if (event.shiftKey && document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus();
+      event.preventDefault();
+    } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
       firstFocusableElement.focus();
       event.preventDefault();
     }
@@ -78,7 +68,7 @@ function trapFocus(element) {
 function closeLightbox() {
   lightbox.style.display = 'none';
   document.body.classList.remove('no-scroll');
-  enableGalleryFocus();
+  toggleGalleryFocus(true);
   document.removeEventListener('keydown', handleKeyDown);
   if (currentGalleryElement) {
     currentGalleryElement.focus();
@@ -113,15 +103,10 @@ function handleKeyDown(event) {
   }
 }
 
-function disableGalleryFocus() {
+function toggleGalleryFocus(enable) {
+  const tabIndexValue = enable ? '0' : '-1';
   document.querySelectorAll('#photographer-images img, #photographer-images video').forEach(el => {
-    el.setAttribute('tabindex', '-1');
-  });
-}
-
-function enableGalleryFocus() {
-  document.querySelectorAll('#photographer-images img, #photographer-images video').forEach(el => {
-    el.setAttribute('tabindex', '0');
+    el.setAttribute('tabindex', tabIndexValue);
   });
 }
 
@@ -135,18 +120,27 @@ function addCloseButtonEvent() {
   });
 }
 
-prevBtn.addEventListener('click', showPrevMedia);
-nextBtn.addEventListener('click', showNextMedia);
+function focusMediaElement() {
+  const videoElement = lightboxContent.querySelector('video');
+  const imageElement = lightboxContent.querySelector('img');
+  
+  if (videoElement) {
+    videoElement.setAttribute('controls', 'controls');
+    videoElement.setAttribute('tabindex', '0'); // Assurer que la vidéo est focusable
+    videoElement.focus();
+  } else if (imageElement) {
+    imageElement.setAttribute('tabindex', '0');
+    imageElement.focus();
+  }
+}
 
-prevBtn.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    showPrevMedia();
-  }
-});
-nextBtn.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    showNextMedia();
-  }
+[prevBtn, nextBtn].forEach(btn => {
+  btn.addEventListener('click', btn === prevBtn ? showPrevMedia : showNextMedia);
+  btn.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      (btn === prevBtn ? showPrevMedia : showNextMedia)();
+    }
+  });
 });
 
 export { showLightbox, mediaItems };

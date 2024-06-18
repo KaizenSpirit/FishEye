@@ -40,53 +40,48 @@
       <div class="price" id="photographer-price"></div>
     </div>
 
-  <section id="contact_modal" role="dialog" aria-modal="true">
-    <div class="modal">
-      <header>
-        <div class="contact"> 
-          <h2>Contactez-moi</h2>
-          <p class="photographer-name"></p>
-        </div>
-
-        <img src="assets/icons/close.svg" class="close_modale" tabindex="0" alt="Close Contact form">
-      </header>
-      <form>
-        <div class="formData">
-          <label id="prenom_label" for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" tabindex="0" aria-labelledby="prenom_label" aria-label="First name">
-        </div>
+    <section id="contact_modal" role="dialog" aria-modal="true">
+      <div class="modal">
+        <header>
+          <div class="contact"> 
+            <h2>Contactez-moi</h2>
+            <p class="photographer-name"></p>
+          </div>
+          <img src="assets/icons/close.svg" class="close_modale" tabindex="0" alt="Close Contact form">
+        </header>
+        <form>
+          <div class="formData">
+            <label id="prenom_label" for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" tabindex="0" aria-labelledby="prenom_label" aria-label="First name">
+          </div>
+          <div class="formData">
+            <label id="nom_label" for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" aria-labelledby="nom_label" aria-label="Last name">
+          </div>
+          <div class="formData">
+            <label id="email_label" for="email">Email</label>
+            <input type="email" id="email" name="email" aria-labelledby="email_label" aria-label="Email">
+          </div>
+          <div class="formData">
+            <label id="message_label" for="message">Votre message</label>
+            <textarea id="message" name="message" rows="5" minlength="10" aria-label="Your message"></textarea>
+          </div>
+          <button class="contact_send-button" type="submit" aria-label="Send">Envoyer</button>
+        </form>
+      </div>
+    </section>
     
-        <div class="formData">
-          <label id="nom_label" for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" aria-labelledby="nom_label" aria-label="Last name">
-        </div>
+    <section id="contact-modal-end" class="bg-modal-end" role="dialog" aria-modal="true">
+      <div class="modal-end">
+        <header>
+          <img src="assets/icons/close.svg" class="close_modale" tabindex="0" alt="Close Contact form">
+        </header> 
+        <p class="message-sent">Message envoyé à</p>
+        <p class="photographer-name"></p>
+        <button class="close-modal-end" tabindex="0" aria-label="Close">Fermer</button>
+      </div>
+    </section>
     
-        <div class="formData">
-          <label id="email_label" for="email">Email</label>
-          <input type="email" id="email" name="email" aria-labelledby="email_label" aria-label="Email">
-        </div>
-    
-        <div class="formData">
-          <label id="message_label" for="message">Votre message</label>
-          <textarea id="message" name="message" rows="5" minlength="10" aria-label="Your message"></textarea>
-        </div>
-        <button class="contact_send-button" type="submit" aria-label="Send">Envoyer</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="contact-modal-end" class="bg-modal-end" role="dialog" aria-modal="true">
-    <div class="modal-end">
-      <header>
-        <img src="assets/icons/close.svg" class="close_modale" tabindex="0" alt="Close Contact form">
-      </header> 
-      <p class="message-sent">Message envoyé à</p>
-      <p class="photographer-name"></p>
-      <button class="close-modal-end" aria-label="Close">Fermer</button>
-    </div>
-
-  </section>
-
 
   </main>
   <script type="module" src="src/photographer.js"></script>

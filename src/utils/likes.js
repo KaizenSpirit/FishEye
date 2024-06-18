@@ -19,7 +19,7 @@ export function addLikeListeners() {
         icon.classList.add('liked');
       }
       likesSpan.innerText = likes;
-      updateTotalLikes(); // Mise à jour directe des likes
+      updateTotalLikes();
     };
     button.addEventListener('click', toggleLike);
     button.addEventListener('keydown', (event) => {

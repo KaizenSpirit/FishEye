@@ -3,7 +3,6 @@ function displayModal() {
   if (modal) {
     modal.style.display = "block";
     disablePageFocus();
-    // Add keyboard event listeners
     document.addEventListener('keydown', handleModalKeyDown);
   } else {
     console.error('contact_modal not found');
@@ -15,13 +14,11 @@ function closeModal() {
   if (modal) {
     modal.style.display = "none";
     enablePageFocus();
-    // Remove keyboard event listeners
     document.removeEventListener('keydown', handleModalKeyDown);
   } else {
     console.error('contact_modal not found');
   }
 }
-
 
 function handleModalKeyDown(event) {
   if (event.key === 'Escape') {
@@ -44,16 +41,35 @@ function enablePageFocus() {
     }
   });
 }
+
 const modalEnd = document.querySelector('#contact-modal-end'); 
 
 function displayModalEnd(){  
   modalEnd.style.display = "block";
+  const closeButton = modalEnd.querySelector('.close-modal-end');
+  if (closeButton) {
+    closeButton.focus();
+    trapFocusOnCloseButton(closeButton);
+  } else {
+    console.error('close-modal-end button not found');
+  }
 }
 
-modalEnd.addEventListener('click',closeModalEnd)
+modalEnd.addEventListener('click', closeModalEnd);
+
 function closeModalEnd(){
   modalEnd.style.display = "none";
 }
+
+function trapFocusOnCloseButton(button) {
+  button.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      e.preventDefault(); // Prevent the default tab behavior
+      button.focus(); // Keep the focus on the button
+    }
+  });
+}
+
 
 
 // Sélecteurs des champs de formulaire

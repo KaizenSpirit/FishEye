@@ -8,13 +8,10 @@ export function sortMediaBy(criteria, medias) {
 
   return medias.slice().sort((a, b) => {
     if (criteria === 'date') {
-      // Tri par date de la plus récente à la plus ancienne
       return new Date(b.date) - new Date(a.date);
     } else if (criteria === 'likes') {
-      // Tri par likes du plus grand au plus petit
       return b.likes - a.likes;
     } else if (criteria === 'title') {
-      // Tri par titre en ordre alphabétique de A à Z
       if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
       if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
       return 0;
@@ -45,6 +42,6 @@ export function addSortEventListener() {
       default:
         sortedMedias = sortMediaBy('likes', globalPhotographer.medias);
     }
-    displayMedia(sortedMedias, globalPhotographer.price);
+    displayMedia(sortedMedias);
   });
 }
