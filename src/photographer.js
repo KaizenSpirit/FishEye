@@ -2,7 +2,7 @@ import { getPhotographerAndMedias } from './api/api.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
 import { addSortEventListener, sortMediaBy } from './utils/sort.js';
-import { addLikeListeners, updateTotalLikes } from './utils/likes.js';
+import { addLikeListeners, updateTotalLikes, insertPhotographerPrice } from './utils/likes.js';
 
 async function fetchAndDisplayPhotographerDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +16,8 @@ async function fetchAndDisplayPhotographerDetails() {
       displayMedia(sortedMedia, photographer.price);
       document.getElementById('orderBy').value = 'Popularité';
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
-      updateTotalLikes(photographer.price);
+      updateTotalLikes();
+      insertPhotographerPrice(photographer.price); 
     } else {
       console.error('Photographer not found');
     }

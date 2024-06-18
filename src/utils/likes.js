@@ -31,7 +31,7 @@ export function addLikeListeners(price, updateTotalLikes) {
 }
 
 
-export function updateTotalLikes(price) { 
+export function updateTotalLikes() {
   const likeCounts = document.querySelectorAll('.like-count');
   let total = 0;
   likeCounts.forEach(like => {
@@ -39,6 +39,9 @@ export function updateTotalLikes(price) {
   });
 
   document.getElementById('total-likes').innerText = `${total}`;
+}
+
+export function insertPhotographerPrice(price) {
   const priceElement = document.querySelector('.price-and-likes .price');
   if (!priceElement) {
     const priceDiv = document.createElement('div');
