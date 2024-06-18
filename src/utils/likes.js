@@ -1,4 +1,4 @@
-export function addLikeListeners(price, updateTotalLikes) {
+export function addLikeListeners() {
   const likeButtons = document.querySelectorAll('.like-button');
 
   likeButtons.forEach(button => {
@@ -19,7 +19,7 @@ export function addLikeListeners(price, updateTotalLikes) {
         icon.classList.add('liked');
       }
       likesSpan.innerText = likes;
-      updateTotalLikes(price);
+      updateTotalLikes(); // Mise à jour directe des likes
     };
     button.addEventListener('click', toggleLike);
     button.addEventListener('keydown', (event) => {
@@ -29,7 +29,6 @@ export function addLikeListeners(price, updateTotalLikes) {
     });
   });
 }
-
 
 export function updateTotalLikes() {
   const likeCounts = document.querySelectorAll('.like-count');
@@ -42,13 +41,8 @@ export function updateTotalLikes() {
 }
 
 export function insertPhotographerPrice(price) {
-  const priceElement = document.querySelector('.price-and-likes .price');
-  if (!priceElement) {
-    const priceDiv = document.createElement('div');
-    priceDiv.classList.add('price');
-    priceDiv.innerText = `${price}€/jour`;
-    document.querySelector('.price-and-likes').appendChild(priceDiv);
-  } else {
+  const priceElement = document.getElementById('photographer-price');
+  if (priceElement) {
     priceElement.innerText = `${price}€/jour`;
   }
 }

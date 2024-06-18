@@ -13,18 +13,18 @@ async function fetchAndDisplayPhotographerDetails() {
       photographer.updatePhotographerDetails();
       photographer.insertPhotographerImage();
       const sortedMedia = sortMediaBy('likes', media);
-      displayMedia(sortedMedia, photographer.price);
+      displayMedia(sortedMedia);
       document.getElementById('orderBy').value = 'Popularité';
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
-      updateTotalLikes();
-      insertPhotographerPrice(photographer.price); 
+      updateTotalLikes(); // Mise à jour des likes sans le prix
+      insertPhotographerPrice(photographer.price); // Charger le prix une seule fois
     } else {
       console.error('Photographer not found');
     }
   }
 }
 
-function displayMedia(media, price) {
+function displayMedia(media) {
   const imagesContainer = document.getElementById('photographer-images');
   imagesContainer.innerHTML = "";
   mediaItems.length = 0; 
@@ -54,10 +54,8 @@ function displayMedia(media, price) {
     }
   });
 
-  addLikeListeners(price, updateTotalLikes); // Ne plus passer de fonction en parramètre/////////////////////////////////////////
- // Ne plus passer de fonction en parramètre/////////////////////////////////////////
- // Ne plus passer de fonction en parramètre/////////////////////////////////////////
-  updateTotalLikes(price);
+  addLikeListeners();
+  updateTotalLikes();
 }
 
 function focusNextMedia(currentIndex) {
@@ -83,7 +81,3 @@ function focusMedia(key) {
 }
 
 fetchAndDisplayPhotographerDetails();
-
-
-
-
