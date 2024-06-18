@@ -12,10 +12,8 @@ async function fetchAndDisplayPhotographerDetails() {
     if (photographer) {
       photographer.updatePhotographerDetails();
       photographer.insertPhotographerImage();
-      // Trier les médias par popularité avant de les afficher
       const sortedMedia = sortMediaBy('likes', media);
       displayMedia(sortedMedia, photographer.price);
-      // Mettre à jour la valeur du select sur "Popularité"
       document.getElementById('orderBy').value = 'Popularité';
       addSortEventListener({ ...photographer, medias: media }, displayMedia);
       updateTotalLikes(photographer.price);
@@ -25,11 +23,11 @@ async function fetchAndDisplayPhotographerDetails() {
   }
 }
 
-function displayMedia(medias, price) {
+function displayMedia(media, price) {
   const imagesContainer = document.getElementById('photographer-images');
   imagesContainer.innerHTML = "";
   mediaItems.length = 0; 
-  medias.forEach((mediaItem, index) => {
+  media.forEach((mediaItem, index) => {
     const htmlString = mediaItem.generateHTML();
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, 'text/html');
@@ -55,7 +53,9 @@ function displayMedia(medias, price) {
     }
   });
 
-  addLikeListeners(price, updateTotalLikes);
+  addLikeListeners(price, updateTotalLikes); // Ne plus passer de fonction en parramètre/////////////////////////////////////////
+ // Ne plus passer de fonction en parramètre/////////////////////////////////////////
+ // Ne plus passer de fonction en parramètre/////////////////////////////////////////
   updateTotalLikes(price);
 }
 

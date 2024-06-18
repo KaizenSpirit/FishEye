@@ -32,10 +32,10 @@ export function addLikeListeners(price, updateTotalLikes) {
 
 
 export function updateTotalLikes(price) { 
-  const likeCounts = document.querySelectorAll('.like-count'); // Corrected class name
+  const likeCounts = document.querySelectorAll('.like-count');
   let total = 0;
   likeCounts.forEach(like => {
-    total += parseInt(like.innerText, 10); // Ensure correct base parsing
+    total += parseInt(like.innerText, 10);
   });
 
   document.getElementById('total-likes').innerText = `${total}`;

@@ -5,7 +5,8 @@ const api_url = "./data/photographers.json";
 export async function getPhotographers() {
   const response = await fetch(api_url);
   const photographersJsonFileData = await response.json();
-  return photographersJsonFileData.photographers;
+  const photographers = photographersJsonFileData.photographers.map(data => new Photographer(data));
+  return photographers;
 }
 
 export async function getPhotographerAndMedias(photographerId) {
@@ -16,3 +17,9 @@ export async function getPhotographerAndMedias(photographerId) {
   const media = data.media.filter(m => m.photographerId === photographerId).map(mediaItem =>new MediaFactory(mediaItem));
   return { photographer, media };
 }
+
+
+//addSortListener ne plus passer de fonction en paramètre : displayMedia
+// impoter utils.js dans photographer.html
+//changer l'appel des prix au chargement de la page et updater le coeurs dans une focntion à part
+//Utiliser le même focus sur l'image que sur la video

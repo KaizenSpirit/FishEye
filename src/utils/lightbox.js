@@ -118,7 +118,7 @@ function enableGalleryFocus() {
     el.setAttribute('tabindex', '0');
   });
 }
-
+// supprimer ceci aussi
 function addVideoKeyboardControls(videoElement) {
   videoElement.addEventListener('keydown', handleVideoKeyDown);
 }
@@ -127,6 +127,13 @@ function removeVideoKeyboardControls(videoElement) {
   videoElement.removeEventListener('keydown', handleVideoKeyDown);
 }
 
+
+// enlever cette fonction ///
+// enlever cette fonction ///
+// enlever cette fonction ///
+// enlever cette fonction ///
+// enlever cette fonction ///
+// enlever cette fonction ///
 function handleVideoKeyDown(event) {
   const videoElement = event.target;
   switch (event.key) {
