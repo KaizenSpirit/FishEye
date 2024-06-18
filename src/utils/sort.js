@@ -1,4 +1,11 @@
+import { displayMedia, globalPhotographer } from '../photographer.js'; // Importer displayMedia et globalPhotographer
+
 export function sortMediaBy(criteria, medias) {
+  if (!medias) {
+    console.error('No medias to sort');
+    return [];
+  }
+
   return medias.slice().sort((a, b) => {
     if (criteria === 'date') {
       // Tri par date de la plus récente à la plus ancienne
@@ -16,25 +23,28 @@ export function sortMediaBy(criteria, medias) {
   });
 }
 
-export function addSortEventListener(photographer, displayMedia) {
+export function addSortEventListener() {
   const orderBySelect = document.getElementById('orderBy');
   orderBySelect.addEventListener('change', (event) => {
+    if (!globalPhotographer || !globalPhotographer.medias) {
+      console.error('globalPhotographer or medias not defined');
+      return;
+    }
+
     let sortedMedias;
     switch (event.target.value) {
       case 'Date':
-        sortedMedias = sortMediaBy('date', photographer.medias);
+        sortedMedias = sortMediaBy('date', globalPhotographer.medias);
         break;
       case 'Popularité':
-        sortedMedias = sortMediaBy('likes', photographer.medias);
+        sortedMedias = sortMediaBy('likes', globalPhotographer.medias);
         break;
       case 'Titre':
-        sortedMedias = sortMediaBy('title', photographer.medias);
+        sortedMedias = sortMediaBy('title', globalPhotographer.medias);
         break;
       default:
-        sortedMedias = sortMediaBy('likes', photographer.medias);
+        sortedMedias = sortMediaBy('likes', globalPhotographer.medias);
     }
-    displayMedia(sortedMedias, photographer.price);
+    displayMedia(sortedMedias, globalPhotographer.price);
   });
 }
-
-
