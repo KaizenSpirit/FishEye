@@ -1,3 +1,4 @@
+// Importer des fonctions et modules nécessaires
 import { getPhotographerAndMedias } from './api/api.js';
 import { displayModal, closeModal } from './utils/modal.js';
 import { showLightbox, mediaItems } from './utils/lightbox.js';
@@ -43,7 +44,7 @@ function displayMedia(media) {
     const mediaCardDOM = createMediaCard(mediaItem, index);
     imagesContainer.appendChild(mediaCardDOM);
   });
-  addLikeListeners();
+  addLikeListeners()
   updateTotalLikes();
 }
 
@@ -59,10 +60,6 @@ function createMediaCard(mediaItem, index) {
     mediaElement.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         showLightbox(index);
-      } else if (event.key === 'ArrowRight') {
-        focusNextMedia(index);
-      } else if (event.key === 'ArrowLeft') {
-        focusPreviousMedia(index);
       }
     });
   } else {
@@ -71,16 +68,6 @@ function createMediaCard(mediaItem, index) {
   return mediaCardDOM;
 }
 
-// function focusNextMedia(currentIndex) {
-//   const nextIndex = (currentIndex + 1) % mediaItems.length;
-//   mediaItems[nextIndex].focus();
-// }
-
-// function focusPreviousMedia(currentIndex) {
-//   const previousIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-//   mediaItems[previousIndex].focus();
-// }
-    
 fetchAndDisplayPhotographerDetails();
 
-export { displayMedia, globalPhotographer }; 
+export { displayMedia, globalPhotographer };

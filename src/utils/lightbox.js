@@ -37,7 +37,7 @@ function showLightbox(index, retainFocus = false) {
   lightbox.style.display = 'flex';
   document.body.classList.add('no-scroll');
   toggleGalleryFocus(false);
-  focusMediaElement(); 
+  focusMediaElement();
   document.addEventListener('keydown', handleKeyDown);
   trapFocus(lightbox);
 
@@ -126,7 +126,7 @@ function focusMediaElement() {
   
   if (videoElement) {
     videoElement.setAttribute('controls', 'controls');
-    videoElement.setAttribute('tabindex', '0'); // Assurer que la vidéo est focusable
+    videoElement.setAttribute('tabindex', '0'); 
     videoElement.focus();
   } else if (imageElement) {
     imageElement.setAttribute('tabindex', '0');
