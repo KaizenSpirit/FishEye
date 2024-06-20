@@ -73,6 +73,9 @@ function createMediaCard(mediaItem, index) {
   return mediaCardDOM; 
 }
 
-fetchAndDisplayPhotographerDetails();
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAndDisplayPhotographerDetails();
+});
+
 
 export { displayMedia, globalPhotographer }; 
