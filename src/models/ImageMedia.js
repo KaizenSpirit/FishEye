@@ -1,11 +1,14 @@
 import Media from './Media.js';
 
+// La classe ImageMedia utilise les propriétés de la classe Media
 class ImageMedia extends Media {
   constructor(data) {
     super(data);
+    // Chemin de l'image basé sur les données fournies
     this.image = `./assets/photographers/medias/${data.image}`;
   }
 
+  // Générer le HTML qui affiche l'image et ses détails
   generateHTML() {
     return `
       <figure>

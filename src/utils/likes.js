@@ -1,3 +1,4 @@
+// Ajouter des écouteurs d'événements aux boutons "like"
 export function addLikeListeners() {
   const likeButtons = document.querySelectorAll('.like-button');
 
@@ -21,6 +22,7 @@ export function addLikeListeners() {
       likesSpan.innerText = likes;
       updateTotalLikes();
     };
+    // Ajouter des écouteurs pour les événements de clic et de touche "Enter" sur les boutons "like"
     button.addEventListener('click', toggleLike);
     button.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
@@ -30,6 +32,7 @@ export function addLikeListeners() {
   });
 }
 
+// Mise à jour le nombre total de "likes"
 export function updateTotalLikes() {
   const likeCounts = document.querySelectorAll('.like-count');
   let total = 0;
@@ -40,6 +43,7 @@ export function updateTotalLikes() {
   document.getElementById('total-likes').innerText = `${total}`;
 }
 
+// Isersion le prix du photographe dans l'élément correspondant
 export function insertPhotographerPrice(price) {
   const priceElement = document.getElementById('photographer-price');
   if (priceElement) {

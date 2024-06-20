@@ -1,3 +1,4 @@
+// Représentation des photographes
 class Photographer {
   constructor(data) {
     this.name = data.name;
@@ -7,9 +8,11 @@ class Photographer {
     this.tagline = data.tagline;
     this.price = data.price;
     this.id = data.id;
+    // Chemin de la photo du photographe basé sur les données fournies
     this.picture = `./assets/photographers/ID/${this.portrait}`;
   }
 
+  // Mise à jour des détails du photographe dans le DOM
   updatePhotographerDetails() {
     document.querySelector('.photograph-name').textContent = this.name;
     document.querySelector('.photograph-location').textContent = `${this.city}, ${this.country}`;
@@ -18,6 +21,7 @@ class Photographer {
     document.querySelector('#contact-modal-end .photographer-name').textContent = this.name;
   }
 
+  // Isersion de l'image du photographe dans le header du DOM
   insertPhotographerImage() {
     const photographerHeader = document.querySelector('.photograph-header');
     const imgHTML = `
@@ -32,6 +36,7 @@ class Photographer {
     photographerHeader.insertAdjacentHTML('beforeend', imgHTML);
   }
 
+  // Obtention de la carte utilisateur du photographe en tant que nœud DOM
   getUserCardDOM() {
     const article = document.createElement('article');
     article.classList.add('photographer-article', `photographer-${this.id}`);
@@ -49,5 +54,6 @@ class Photographer {
 }
 
 export default Photographer;
+
 
 

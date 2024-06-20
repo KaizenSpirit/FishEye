@@ -1,3 +1,4 @@
+// Cette classe de base représente les médias (images et vidéos)
 class Media {
   constructor({ id, photographerId, title, likes, date, price, image, video }) {
     this.id = id;
@@ -10,6 +11,7 @@ class Media {
     this.video = video;
   }
 
+  // Obtention du contenu HTML du média en tant que nœud DOM
   getMediaContentDOM() {
     const htmlString = this.generateHTML();
     const parser = new DOMParser();
@@ -19,6 +21,7 @@ class Media {
 }
 
 export default Media;
+
 
 
 

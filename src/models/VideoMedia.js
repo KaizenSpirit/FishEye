@@ -1,11 +1,14 @@
 import Media from './Media.js';
 
+// Classe VideoMedia qui utilise les propriétés de la classe Media
 class VideoMedia extends Media {
   constructor(data) {
     super(data);
+    // Chemin de la vidéo basé sur les données fournies
     this.video = `./assets/photographers/videos/${data.video}`;
   }
 
+  // Générer le HTML dans le but d'afficher la vidéo et ses détails
   generateHTML() {
     return `
       <figure>
@@ -22,4 +25,5 @@ class VideoMedia extends Media {
 }
 
 export default VideoMedia;
+
 

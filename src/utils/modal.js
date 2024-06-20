@@ -1,3 +1,4 @@
+// Afficher la fenêtre modale de contact
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   if (modal) {
@@ -9,6 +10,7 @@ function displayModal() {
   }
 }
 
+// Fermer la fenêtre modale de contact
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   if (modal) {
@@ -20,12 +22,14 @@ function closeModal() {
   }
 }
 
+// Gérer les touches dans la fenêtre modale (fermeture avec "Escape")
 function handleModalKeyDown(event) {
   if (event.key === 'Escape') {
     closeModal();
   }
 }
 
+// Désactiver le focus sur tous les éléments sauf ceux de la fenêtre modale
 function disablePageFocus() {
   document.querySelectorAll('body *').forEach(el => {
     if (!el.closest('#contact_modal')) {
@@ -34,6 +38,7 @@ function disablePageFocus() {
   });
 }
 
+// Réactiver le focus sur tous les éléments après fermeture de la fenêtre modale
 function enablePageFocus() {
   document.querySelectorAll('body *').forEach(el => {
     if (!el.closest('#contact_modal')) {
@@ -42,8 +47,10 @@ function enablePageFocus() {
   });
 }
 
+// Sélectionner l'élément de fin de modal
 const modalEnd = document.querySelector('#contact-modal-end'); 
 
+// Affichage de la fenêtre modale de fin
 function displayModalEnd(){  
   modalEnd.style.display = "block";
   const closeButton = modalEnd.querySelector('.close-modal-end');
@@ -57,22 +64,21 @@ function displayModalEnd(){
 
 modalEnd.addEventListener('click', closeModalEnd);
 
+
 function closeModalEnd(){
   modalEnd.style.display = "none";
 }
 
+// Piéger le focus sur le bouton de fermeture de la fenêtre modale de fin
 function trapFocusOnCloseButton(button) {
   button.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
-      e.preventDefault(); // Prevent the default tab behavior
-      button.focus(); // Keep the focus on the button
+      e.preventDefault(); // Empêche le comportement par défaut de la touche Tab
+      button.focus(); // Garde le focus sur le bouton
     }
   });
 }
 
-
-
-// Sélecteurs des champs de formulaire
 const firstNameInput = document.getElementById('prenom');
 const lastNameInput = document.getElementById('nom');
 const emailInput = document.getElementById('email');
@@ -89,7 +95,7 @@ const lastNameErrorMessage = "Nom entre 2 et 15 caractères";
 const emailErrorMessage = "Adresse email invalide";
 const messageErrorMessage = " Dix caractères minimum";
 
-// Fonction de validation des champs
+// Validation des champs
 function isInputsValidated(inputElement, regex, errorMessage) {
   if (!regex.test(inputElement.value)) {
     errorDisplay(inputElement, errorMessage);
@@ -99,6 +105,7 @@ function isInputsValidated(inputElement, regex, errorMessage) {
   return true;
 }
 
+// Validation du champ de message
 function isMessageValidated(textareaElement, errorMessage) {
   if (textareaElement.value.length < 10) {
     errorDisplay(textareaElement, errorMessage);
@@ -137,6 +144,7 @@ messageInput.addEventListener('blur', () => {
   isMessageValidated(messageInput, messageErrorMessage);
 });
 
+// Gérer la soumission du formulaire
 function handleFormSubmit(event) {
   event.preventDefault(); 
   const isFirstNameValid = isInputsValidated(firstNameInput, firstNameRegex, firstNameErrorMessage);
@@ -153,17 +161,16 @@ function handleFormSubmit(event) {
       message: messageInput.value,
     };
     console.log(formData);
-
     // Réinitialiser le formulaire
     event.target.reset();
-
     closeModal();
-    displayModalEnd()
+    displayModalEnd();
   } else {
     console.log("formdata invalide");
   }
 }
 
+// Ajout d'écouteurs d'événements pour les boutons et le formulaire
 document.querySelector(".contact_button")?.addEventListener('click', displayModal);
 document.querySelector(".close_modale")?.addEventListener('click', closeModal);
 document.querySelector(".close_modale")?.addEventListener('keydown', (event) => {
