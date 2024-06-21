@@ -64,6 +64,19 @@ color: black;
   overflow:hidden;
 }
 
+.photograph-header button:focus{
+transform: scale(1.2);
+}
+
+.photograph-header a:focus{
+transform: scale(1.1);
+}
+
+.photographer-header a:focus{
+  transform: scale(1.2);
+  padding: 5px;
+  }
+
 .photograph-header a .photograph-243-img{
   object-fit: cover;
   width: 300px;

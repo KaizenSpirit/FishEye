@@ -12,7 +12,7 @@ class ImageMedia extends Media {
   generateHTML() {
     return `
       <figure>
-        <img class="img_display" src="${this.image}" alt="${this.title}" title="Travail de l'auteur ${this.title}" tabindex="0">
+        <img class="img_display" src="${this.image}" alt="Image de l'auteur : ${this.title}" title="${this.title}" tabindex="0">
         <figcaption class="personal-photos">
           <p class="photo-details">${this.title}</p>
           <div class="likes">

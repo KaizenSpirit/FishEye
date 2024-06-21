@@ -19,6 +19,11 @@ select {
 .order-by__select{
   font-size: 25px;
 }
+
+.order-by__select:focus{
+  transform: scale(1.2);
+}
+
 .order-by__option{
   font-size: 25px;
 }
@@ -27,6 +32,8 @@ select {
    flex-direction: column;
    margin-left: 50px;
   }
+
+
   .order-by__label{
       margin: 0 0 20px 30px;
   }

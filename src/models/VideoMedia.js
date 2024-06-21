@@ -12,7 +12,7 @@ class VideoMedia extends Media {
   generateHTML() {
     return `
       <figure>
-        <video class="vids" controls src="${this.video}" aria-label="${this.title}" title="Video de l'auteur ${this.title}" tabindex="0"></video>
+        <video class="vids" controls src="${this.video}" aria-label="Video de l'auteur : ${this.title}" title=" ${this.title}" tabindex="0"></video>
         <figcaption class="personal-photos">
           <p class="photo-details">${this.title}</p>
           <div class="likes">

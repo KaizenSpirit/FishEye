@@ -13,6 +13,15 @@ main label {
   padding-bottom: 1rem;
 }
 
+#photographer-images img:focus,
+#photographer-images video:focus {
+  outline: none;
+  border: 2px solid black; 
+  transform: scale(1.02); 
+  overflow: hidden;
+  background-size: 150%;
+}
+
 h2, p{
   margin: 0;
   font-weight: normal;
@@ -31,6 +40,9 @@ h2, p{
   /* padding-top: 1rem; */
   margin-top: 1rem;
 }
+
+
+
 #photographer-images figure {
   position: relative;
   display: flex;
@@ -72,6 +84,12 @@ main figcaption {
 #photographer-images figure i{
   cursor: pointer;
   margin-left: 10px;
+}
+
+#photographer-images figure i:focus{
+ border: none;
+ transform: scale(1.6);
+ outline: none;
 }
 
 #photographer-images figure i:hover{

@@ -23,6 +23,10 @@
   overflow:hidden;
 }
 
+.photographer_section article a:focus{
+  transform: scale(1.1);
+  }
+
 .photographer_section article img {
     display: block;
     width: 290px;
@@ -98,6 +102,7 @@ transform: translateX(-135px);
     font-size: 0.8rem;
     margin: 7px 0 0 0 ;
 }
+
 
 
 @media screen and (max-width: 760px) {
