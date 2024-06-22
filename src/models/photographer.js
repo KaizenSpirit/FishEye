@@ -44,7 +44,7 @@ class Photographer {
       <a href="photographer.html?id=${this.id}">
         <img class="photographer-img photographer-${this.id}-img" src="${this.picture}" alt="Visitez la page de ${this.name}">
       </a>
-      <h2 class="photograph-name photographer-${this.id}-name">${this.name}</h2>
+      <a href="photographer.html?id=${this.id}" class="photograph-name-first-page"><h2 class="photograph-name photographer-${this.id}-name">${this.name}</h2></a>
       <h3 class="photograph-location photographer-${this.id}-location">${this.city}, ${this.country}</h3>
       <h4 class="photograph-tagline photographer-${this.id}-tagline">${this.tagline}</h4>
       <h5 class="photograph-price photographer-${this.id}-price">${this.price}€/jour</h5>
