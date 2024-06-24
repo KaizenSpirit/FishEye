@@ -5,7 +5,7 @@ import { showLightbox, mediaItems } from './utils/lightbox.js';
 import { addSortEventListener, sortMediaBy } from './utils/sort.js'; 
 import { addLikeListeners, updateTotalLikes, insertPhotographerPrice } from './utils/likes.js'; 
 
-let globalPhotographer; 
+
 
 // Récupération asynchrone et d'affichage des détails du photographe
 async function fetchAndDisplayPhotographerDetails() {
@@ -13,12 +13,11 @@ async function fetchAndDisplayPhotographerDetails() {
   if (photographerId) {
     const { photographer, media } = await getPhotographerAndMedias(parseInt(photographerId, 10)); 
     if (photographer) {
-      globalPhotographer = { ...photographer, medias: media }; 
       updatePhotographerDetails(photographer); 
       const sortedMedia = sortMediaBy('likes', media); 
       displayMedia(sortedMedia); 
       document.getElementById('orderBy').value = 'Popularité'; 
-      addSortEventListener(); 
+      addSortEventListener( media ); 
       updateTotalLikes(); 
       insertPhotographerPrice(photographer.price); 
     } else {
@@ -76,4 +75,4 @@ function createMediaCard(mediaItem, index) {
 
 
 
-export { displayMedia, globalPhotographer }; 
+export { displayMedia}; 

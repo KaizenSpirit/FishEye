@@ -17,7 +17,7 @@ class ImageMedia extends Media {
           <p class="photo-details">${this.title}</p>
           <div class="likes">
             <p class="photo-details like-count" data-likes="${this.likes}">${this.likes}</p>
-            <i class="fa-solid fa-heart like-button" data-id="${this.id}" data-liked="false"></i>
+            <i class="fa-solid fa-heart like-button" data-id="${this.id}" data-liked="false" aria-label="likes"></i>
           </div>
         </figcaption>
       </figure>`;

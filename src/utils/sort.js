@@ -1,4 +1,4 @@
-import { displayMedia, globalPhotographer } from '../photographer.js'; // Importer displayMedia et globalPhotographer
+import { displayMedia} from '../photographer.js'; // Importer displayMedia et globalPhotographer
 
 // Fonction pour trier les médias selon un critère donné
 export function sortMediaBy(criteria, medias) {
@@ -25,10 +25,10 @@ export function sortMediaBy(criteria, medias) {
 }
 
 // Fonction pour ajouter un écouteur d'événements sur l'élément de tri
-export function addSortEventListener() {
+export function addSortEventListener(medias) {
   const orderBySelect = document.getElementById('orderBy');
   orderBySelect.addEventListener('change', (event) => {
-    if (!globalPhotographer || !globalPhotographer.medias) {
+    if (!medias) {
       console.error('globalPhotographer or medias not defined');
       return;
     }
@@ -37,19 +37,19 @@ export function addSortEventListener() {
     switch (event.target.value) {
       case 'Date':
         // Trier les médias par date
-        sortedMedias = sortMediaBy('date', globalPhotographer.medias);
+        sortedMedias = sortMediaBy('date', medias);
         break;
       case 'Popularité':
         // Trier les médias par popularité (likes)
-        sortedMedias = sortMediaBy('likes', globalPhotographer.medias);
+        sortedMedias = sortMediaBy('likes', medias);
         break;
       case 'Titre':
         // Trier les médias par titre
-        sortedMedias = sortMediaBy('title', globalPhotographer.medias);
+        sortedMedias = sortMediaBy('title', medias);
         break;
       default:
         // Par défaut, trier par popularité
-        sortedMedias = sortMediaBy('likes', globalPhotographer.medias);
+        sortedMedias = sortMediaBy('likes', medias);
     }
     // Afficher les médias triés
     displayMedia(sortedMedias);

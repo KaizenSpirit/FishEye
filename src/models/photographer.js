@@ -29,7 +29,7 @@ class Photographer {
         <img 
           src="${this.picture}" 
           alt="${this.name}" 
-          class="photograph-img photograph-${this.id}-img"
+          class="photograph-img"
         />
       </a>
     `;
@@ -42,7 +42,7 @@ class Photographer {
     article.classList.add('photographer-article', `photographer-${this.id}`);
     article.innerHTML = `
       <a href="photographer.html?id=${this.id}">
-        <img class="photographer-img photographer-${this.id}-img" src="${this.picture}" alt="Visitez la page de ${this.name}">
+        <img class="photographer-img" src="${this.picture}" alt="Visitez la page de ${this.name}">
       </a>
       <a href="photographer.html?id=${this.id}" class="photograph-name-first-page"><h2 class="photograph-name photographer-${this.id}-name">${this.name}</h2></a>
       <h3 class="photograph-location photographer-${this.id}-location">${this.city}, ${this.country}</h3>

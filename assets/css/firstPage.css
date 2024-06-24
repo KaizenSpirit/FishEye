@@ -30,50 +30,16 @@
 .photographer_section article img {
     display: block;
     width: 290px;
-    height: 270px;
+    height: 250px;
 }
 
-.photographer-243 .photographer-img{
+.photographer-img{
 object-fit: cover;
-width: 300px;
+width: 250px;
 object-position: 60% 60%;
-transform: translateX(-41px);
+transform: translateX(-31px);
 }
 
-.photographer-930 .photographer-img{
-object-fit: cover;
-width: 530px;
-object-position: 70% 50%;
-transform: translateX(-160px);
-}
-
-.photographer-82 .photographer-img{
-object-fit: cover;
-width: 250px;
-object-position: 0% 50%;
-transform: translateY(-25px);
-}
-
-.photographer-527 .photographer-img{
-  object-fit: cover;
-width: 250px;
-object-position: 50% 50%;
-transform: translateX(-20px)
-}
-
-.photographer-925 .photographer-img{
-object-fit: cover;
-width: 500px;
-object-position: 50% 40%;
-transform: translateX(-150px);
-}
-
-.photographer-195 .photographer-img{
-object-fit: cover;
-width: 480px;
-object-position: 0% 60%;
-transform: translateX(-135px);
-}
 
 .photograph-header__bloc-titre{
   margin-bottom: 30px;
