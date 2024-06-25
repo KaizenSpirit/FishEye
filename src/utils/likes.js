@@ -1,9 +1,15 @@
-// Ajouter des écouteurs d'événements aux boutons "like"
+/**
+ * Ajoute des écouteurs d'événements aux boutons de like pour gérer l'incrémentation et la décrémentation des likes.
+ * Les boutons peuvent être activés via un clic ou en appuyant sur la touche "Entrée".
+ */
 export function addLikeListeners() {
   const likeButtons = document.querySelectorAll('.like-button');
-
   likeButtons.forEach(button => {
     button.setAttribute('tabindex', '0');
+    /**
+     * Bascule l'état "like" d'un média, met à jour le nombre de likes et l'icône correspondante.
+     * @param {Event} event - L'événement déclenché par un clic ou une pression sur la touche "Entrée".
+     */
     const toggleLike = (event) => {
       event.stopPropagation(); 
       const icon = event.target;
@@ -22,7 +28,6 @@ export function addLikeListeners() {
       likesSpan.innerText = likes;
       updateTotalLikes();
     };
-    // Ajouter des écouteurs pour les événements de clic et de touche "Enter" sur les boutons "like"
     button.addEventListener('click', toggleLike);
     button.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
@@ -32,7 +37,9 @@ export function addLikeListeners() {
   });
 }
 
-// Mise à jour le nombre total de "likes"
+/**
+ * Met à jour le total des likes affiché en bas de la page en sommant tous les likes individuels.
+ */
 export function updateTotalLikes() {
   const likeCounts = document.querySelectorAll('.like-count');
   let total = 0;
@@ -43,7 +50,10 @@ export function updateTotalLikes() {
   document.getElementById('total-likes').innerText = `${total}`;
 }
 
-// Isersion le prix du photographe dans l'élément correspondant
+/**
+ * Insère le prix du photographe dans l'élément de la page prévu à cet effet.
+ * @param {number} price - Le prix journalier du photographe.
+ */
 export function insertPhotographerPrice(price) {
   const priceElement = document.getElementById('photographer-price');
   if (priceElement) {

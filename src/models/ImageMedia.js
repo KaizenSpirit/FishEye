@@ -1,14 +1,23 @@
 import Media from './Media.js';
-
-// La classe ImageMedia utilise les propriétés de la classe Media
+/**
+ * Représente un média de type image, étend la classe Media pour ajouter une gestion spécifique des images.
+ */
 class ImageMedia extends Media {
+  /**
+   * Crée une nouvelle instance d'ImageMedia.
+   * @param {Object} data - Les données spécifiques au média image.
+   * @param {string} data.image - Le nom de fichier de l'image.
+   */
   constructor(data) {
     super(data);
-    // Chemin de l'image basé sur les données fournies
     this.image = `./assets/photographers/medias/${data.image}`;
   }
 
-  // Générer le HTML qui affiche l'image et ses détails
+  /**
+   * Génère et retourne le HTML nécessaire pour afficher l'image sur la page web.
+   * Le HTML inclut une balise `<figure>` avec une `<img>`, et une `<figcaption>` contenant les détails de l'image et des options pour aimer l'image.
+   * @returns {string} Le HTML sous forme de chaîne de caractères pour l'affichage de l'image.
+   */
   generateHTML() {
     return `
       <figure>
@@ -25,3 +34,4 @@ class ImageMedia extends Media {
 }
 
 export default ImageMedia;
+

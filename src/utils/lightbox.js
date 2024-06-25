@@ -1,18 +1,19 @@
-// Variables globales: stockent les éléments des médias, l'index du média actuel et l'élément de la galerie actuel
 let mediaItems = [];
 let currentMediaIndex = 0;
 let currentGalleryElement = null;
 
-// Créer et ajouter la lightbox au document
 const lightbox = createLightbox();
 document.body.appendChild(lightbox);
 
-// Récupérer les éléments de contenu de la lightbox et les boutons de navigation
 const lightboxContent = lightbox.querySelector('.media-container');
 const prevBtn = lightbox.querySelector('.prev');
 const nextBtn = lightbox.querySelector('.next');
 
-// Création de la lightbox HTML
+/**
+ * Crée et retourne un élément DOM représentant la lightbox.
+ * La lightbox contient des contrôles pour naviguer entre les médias et un conteneur pour afficher le média actuel.
+ * @returns {HTMLElement} L'élément DOM de la lightbox.
+ */
 function createLightbox() {
   const lightbox = document.createElement('div');
   lightbox.id = 'lightbox';
@@ -27,7 +28,11 @@ function createLightbox() {
   return lightbox;
 }
 
-// Affichage de la lightbox avec un média spécifique
+/**
+ * Affiche la lightbox avec le média spécifié par son index.
+ * @param {number} index - L'index du média à afficher.
+ * @param {boolean} [retainFocus=false] - Si vrai, conserve le focus sur l'élément actuel.
+ */
 function showLightbox(index, retainFocus = false) {
   currentMediaIndex = index;
   currentGalleryElement = mediaItems[currentMediaIndex];
@@ -52,12 +57,14 @@ function showLightbox(index, retainFocus = false) {
   addCloseButtonEvent();
 }
 
-// Générer le focus des éléments dans la lightbox
+/**
+ * Empêche le focus de sortir de l'élément spécifié, créant ainsi un piège de focus.
+ * @param {HTMLElement} element - L'élément dans lequel piéger le focus.
+ */
 function trapFocus(element) {
   const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
   const firstFocusableElement = focusableElements[0];
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
   element.addEventListener('keydown', function(event) {
     if (event.key !== 'Tab') return;
 
@@ -71,7 +78,9 @@ function trapFocus(element) {
   });
 }
 
-// Fermer la lightbox
+/**
+ * Ferme la lightbox et restaure l'état de défilement et de focus de la page.
+ */
 function closeLightbox() {
   lightbox.style.display = 'none';
   document.body.classList.remove('no-scroll');
@@ -82,21 +91,28 @@ function closeLightbox() {
   }
 }
 
-// Afficher le média précédent
+/**
+ * Affiche le média précédent dans la lightbox.
+ */
 function showPrevMedia() {
   currentMediaIndex = (currentMediaIndex > 0) ? currentMediaIndex - 1 : mediaItems.length - 1;
   showLightbox(currentMediaIndex, true);
   prevBtn.focus();
 }
 
-// Afficher le média suivant
+/**
+ * Affiche le média suivant dans la lightbox.
+ */
 function showNextMedia() {
   currentMediaIndex = (currentMediaIndex < mediaItems.length - 1) ? currentMediaIndex + 1 : 0;
   showLightbox(currentMediaIndex, true);
   nextBtn.focus();
 }
 
-// Générer les événements de touche dans la lightbox
+/**
+ * Gère les événements de clavier pour la navigation et la fermeture de la lightbox.
+ * @param {KeyboardEvent} event - L'événement clavier.
+ */
 function handleKeyDown(event) {
   switch (event.key) {
     case 'ArrowLeft':
@@ -113,7 +129,10 @@ function handleKeyDown(event) {
   }
 }
 
-// Activer ou désactiver le focus des éléments de la galerie
+/**
+ * Active ou désactive le focus des éléments de la galerie en modifiant leur attribut tabindex.
+ * @param {boolean} enable - Si vrai, active le focus; sinon, le désactive.
+ */
 function toggleGalleryFocus(enable) {
   const tabIndexValue = enable ? '0' : '-1';
   document.querySelectorAll('#photographer-images img, #photographer-images video').forEach(el => {
@@ -121,7 +140,9 @@ function toggleGalleryFocus(enable) {
   });
 }
 
-// Ajouter des événements au bouton de fermeture
+/**
+ * Ajoute des événements de clic et de clavier pour fermer la lightbox.
+ */
 function addCloseButtonEvent() {
   const closeBtn = lightboxContent.querySelector('.close');
   closeBtn.addEventListener('click', closeLightbox);
@@ -132,7 +153,9 @@ function addCloseButtonEvent() {
   });
 }
 
-// Mettre le focus sur l'élément média (image ou vidéo) dans la lightbox
+/**
+ * Met le focus sur l'élément média dans la lightbox.
+ */
 function focusMediaElement() {
   const videoElement = lightboxContent.querySelector('video');
   const imageElement = lightboxContent.querySelector('img');
@@ -147,7 +170,7 @@ function focusMediaElement() {
   }
 }
 
-// Ajouter des événements de clic et de touche aux boutons de navigation
+// Ajoute des événements pour les boutons de navigation de la lightbox.
 [prevBtn, nextBtn].forEach(btn => {
   btn.addEventListener('click', btn === prevBtn ? showPrevMedia : showNextMedia);
   btn.addEventListener('keydown', (event) => {

@@ -1,14 +1,24 @@
 import Media from './Media.js';
 
-// Classe VideoMedia qui utilise les propriétés de la classe Media
+/**
+ * Représente un média de type vidéo, étend la classe Media pour ajouter une gestion spécifique des vidéos.
+ */
 class VideoMedia extends Media {
+  /**
+   * Crée une nouvelle instance de VideoMedia.
+   * @param {Object} data - Les données spécifiques au média vidéo.
+   * @param {string} data.video - Le nom de fichier de la vidéo.
+   */
   constructor(data) {
     super(data);
-    // Chemin de la vidéo basé sur les données fournies
     this.video = `./assets/photographers/videos/${data.video}`;
   }
 
-  // Générer le HTML dans le but d'afficher la vidéo et ses détails
+  /**
+   * Génère et retourne le HTML nécessaire pour afficher la vidéo sur la page web.
+   * Le HTML inclut une balise `<figure>` avec une `<video>`, et une `<figcaption>` contenant les détails de la vidéo et des options pour aimer la vidéo.
+   * @returns {string} Le HTML sous forme de chaîne de caractères pour l'affichage de la vidéo.
+   */
   generateHTML() {
     return `
       <figure>
@@ -25,6 +35,7 @@ class VideoMedia extends Media {
 }
 
 export default VideoMedia;
+
 
 
 

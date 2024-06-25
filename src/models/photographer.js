@@ -1,5 +1,18 @@
-// Représentation des photographes
+/**
+ * Représente un photographe avec ses détails personnels et des méthodes pour manipuler et afficher ces informations dans l'interface utilisateur.
+ */
 class Photographer {
+  /**
+   * Crée une instance de Photographer.
+   * @param {Object} data - Les données du photographe.
+   * @param {string} data.name - Le nom du photographe.
+   * @param {string} data.portrait - Le nom de fichier du portrait du photographe.
+   * @param {string} data.city - La ville du photographe.
+   * @param {string} data.country - Le pays du photographe.
+   * @param {string} data.tagline - La phrase d'accroche du photographe.
+   * @param {number} data.price - Le tarif journalier du photographe.
+   * @param {number} data.id - L'identifiant unique du photographe.
+   */
   constructor(data) {
     this.name = data.name;
     this.portrait = data.portrait;
@@ -8,11 +21,13 @@ class Photographer {
     this.tagline = data.tagline;
     this.price = data.price;
     this.id = data.id;
-    // Chemin de la photo du photographe basé sur les données fournies
     this.picture = `./assets/photographers/ID/${this.portrait}`;
   }
 
-  // Mise à jour des détails du photographe dans le DOM
+  /**
+   * Met à jour les détails du photographe dans l'interface utilisateur.
+   * Modifie le contenu des éléments DOM correspondants avec les informations du photographe.
+   */
   updatePhotographerDetails() {
     document.querySelector('.photograph-name').textContent = this.name;
     document.querySelector('.photograph-location').textContent = `${this.city}, ${this.country}`;
@@ -21,7 +36,10 @@ class Photographer {
     document.querySelector('#contact-modal-end .photographer-name').textContent = this.name;
   }
 
-  // Isersion de l'image du photographe dans le header du DOM
+  /**
+   * Insère l'image du photographe dans l'en-tête de la page du photographe.
+   * Ajoute un élément HTML contenant l'image du photographe à l'élément DOM spécifié.
+   */
   insertPhotographerImage() {
     const photographerHeader = document.querySelector('.photograph-header');
     const imgHTML = `
@@ -36,7 +54,11 @@ class Photographer {
     photographerHeader.insertAdjacentHTML('beforeend', imgHTML);
   }
 
-  // Obtention de la carte utilisateur du photographe en tant que nœud DOM
+  /**
+   * Crée et retourne un élément DOM représentant une carte de visite du photographe.
+   * La carte de visite inclut l'image, le nom, la localisation, la tagline et le tarif du photographe.
+   * @returns {HTMLElement} Un élément DOM <article> contenant les informations du photographe.
+   */
   getUserCardDOM() {
     const article = document.createElement('article');
     article.classList.add('photographer-article', `photographer-${this.id}`);
@@ -53,8 +75,4 @@ class Photographer {
   }
 }
 
-
 export default Photographer;
-
-
-

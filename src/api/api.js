@@ -2,7 +2,11 @@ import MediaFactory from '../factories/MediaFactory.js';
 import Photographer from '../models/photographer.js';
 const api_url = "./data/photographers.json";
 
-// Récupérer tous les photographes depuis le fichier JSON et créer des objets photographe
+/**
+ * Récupère et retourne une liste de tous les photographes.
+ * @async Fonction asynchrone qui retourne une promesse
+ * @returns {Promise<Photographer[]>} Une promesse qui résout un tableau d'instances de Photographer.
+ */
 export async function getPhotographers() {
   const response = await fetch(api_url);
   const photographersJsonFileData = await response.json();
@@ -10,7 +14,12 @@ export async function getPhotographers() {
   return photographers;
 }
 
-// Récupérer les données d'un photographe spécifique et ses médias associés en fonction de son ID
+/**
+ * Récupère et retourne un photographe et ses médias associés en fonction de son identifiant.
+ * @async 
+ * @param {number} photographerId - L'identifiant unique du photographe à retrouver.
+ * @returns {Promise<{photographer: Photographer, media: MediaFactory[]}>} Une promesse qui résout un objet contenant un photographe et un tableau de ses médias, chacun créé via la MediaFactory.
+ */
 export async function getPhotographerAndMedias(photographerId) {
   const response = await fetch(api_url);
   const data = await response.json();
