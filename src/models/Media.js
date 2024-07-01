@@ -26,18 +26,6 @@ class Media {
   }
 
   /**
-   * Génère un élément DOM à partir du HTML retourné par la méthode generateHTML.
-   * Cette méthode utilise un DOMParser pour transformer une chaîne HTML en un élément DOM.
-   * @returns {ChildNode} Le premier enfant du corps du document analysé, représentant le contenu média sous forme d'élément DOM.
-   */
-  getMediaContentDOM() {
-    const htmlString = this.generateHTML();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlString, 'text/html');
-    return doc.body.firstChild;
-  }
-
-  /**
    * Méthode destinée à être surchargée par des sous-classes pour générer du HTML spécifique au type de média.
    * @returns {string} Une chaîne de caractères représentant le HTML pour le média.
    */

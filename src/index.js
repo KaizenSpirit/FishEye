@@ -7,7 +7,7 @@ import { getPhotographers } from './api/api.js';
  * @async
  * @returns {Promise<void>} Une promesse qui se résout quand les photographes sont rendus.
  */
-export async function fetchAndRenderPhotographers() {
+ async function fetchAndRenderPhotographers() {
   const photographers = await getPhotographers();
   const photographersSection = document.querySelector(".photographer_section");
   photographersSection.innerHTML = ""; 

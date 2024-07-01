@@ -11,12 +11,15 @@
   <title>Fisheye - photographe</title>
 </head>
 <body>
-
+  <!-- Titre de la page  -->
   <header class="photographer-header">
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"></a>
+    <nav>
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"></a>
+    </nav>
   </header>
 
   <main id="main">
+    <!-- Présentation du photographe -->
     <div class="photograph-header">
       <div class="photograph-header__bloc-titre">
         <h1 class="photograph-name">Nom du photographe</h1>
@@ -25,7 +28,7 @@
       </div>
       <button class="contact_button" aria-label="Contact me">Contactez-moi</button>
     </div>
-
+<!-- Sélection du photographe  -->
     <form action="photographer.html" class="order-by">
       <label for="orderBy" class="order-by__label" aria-label="Order by">Trier par</label>
       <select name="order" id="orderBy" class="order-by__select">
@@ -35,13 +38,16 @@
       </select>
   </form>
 
-    <div id="photographer-images"></div>
+  <!-- Zone d'affichage des medias -->
+    <section id="photographer-images"></section>
 
+    <!-- Affichage du prix et du total des likes du photographe  -->
     <div class="price-and-likes">
       <div class="total_likes" id="total-likes" role="status" aria-live="polite"></div>
       <div class="price" id="photographer-price"></div>
     </div>
 
+    <!-- Modale de contact d'un photographe  -->
     <div id="contact_modal" role="dialog" aria-modal="true">
       <div class="modal">
         <header>
@@ -73,6 +79,7 @@
       </div>
     </div>
     
+    <!-- Modale de confirmation d'envoie -->
     <div id="contact-modal-end" class="bg-modal-end" role="dialog" aria-modal="true">
       <div class="modal-end">
         <header>

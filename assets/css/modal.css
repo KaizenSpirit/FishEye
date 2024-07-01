@@ -30,6 +30,12 @@
 
 #contact_modal header{
 position: relative;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+height: 90px;
+padding: 0 7rem;
 }
 
 #contact_modal h2, #contact_modal p{

@@ -207,7 +207,10 @@ function handleFormSubmit(event) {
   }
 }
 
-// Ajoute des écouteurs d'événements pour ouvrir et fermer la modal de contact.
+/**
+ * Ajoute des écouteurs d'événements pour ouvrir et fermer la modal de contact.
+ */
+
 document.querySelector(".contact_button")?.addEventListener('click', displayModal);
 document.querySelector(".close_modale")?.addEventListener('click', closeModal);
 document.querySelector(".close_modale")?.addEventListener('keydown', (event) => {
@@ -216,7 +219,10 @@ document.querySelector(".close_modale")?.addEventListener('keydown', (event) => 
   }
 });
 
-// Ajoute un écouteur d'événement pour gérer la soumission du formulaire.
+/**
+ *  Ajoute un écouteur d'événement pour gérer la soumission du formulaire.
+ * 
+ */
 document.querySelector('#contact_modal form')?.addEventListener('submit', handleFormSubmit);
 
 export { displayModal, closeModal };

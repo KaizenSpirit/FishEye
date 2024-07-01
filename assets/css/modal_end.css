@@ -30,6 +30,12 @@
 
 .modal-end header{
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 0 7rem;
   }
   
   .modal-end h2, .modal-end p{
