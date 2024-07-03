@@ -124,6 +124,12 @@ figure{
    display: flex;
  }
 
+ .likes:focus{
+  display: flex;
+  transform: scale(1.2);
+  outline: none;
+}
+
  .photo-details{
   max-width: 320px;
   text-overflow: ellipsis;

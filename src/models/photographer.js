@@ -1,3 +1,5 @@
+
+
 /**
  * Représente un photographe avec ses détails personnels et des méthodes pour manipuler et afficher ces informations dans l'interface utilisateur.
  */

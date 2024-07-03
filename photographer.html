@@ -26,9 +26,9 @@
         <h2 class="photograph-location"></h2>
         <h3 class="photograph-tagline"></h3>
       </div>
-      <button class="contact_button" aria-label="Contact me">Contactez-moi</button>
+      <button class="contact_button" aria-label="Contacte Me">Contactez-moi</button>
     </div>
-<!-- Sélection du photographe  -->
+    <!-- Sélection du photographe  -->
     <form action="photographer.html" class="order-by">
       <label for="orderBy" class="order-by__label" aria-label="Order by">Trier par</label>
       <select name="order" id="orderBy" class="order-by__select">
@@ -36,14 +36,14 @@
           <option value="Date" class="order-by__option">Date</option>
           <option value="Titre" class="order-by__option">Titre</option>
       </select>
-  </form>
+    </form>
 
-  <!-- Zone d'affichage des medias -->
+    <!-- Zone d'affichage des medias -->
     <section id="photographer-images"></section>
 
     <!-- Affichage du prix et du total des likes du photographe  -->
     <div class="price-and-likes">
-      <div class="total_likes" id="total-likes" role="status" aria-live="polite"></div>
+      <div class="total_likes" id="total-likes" role="status" aria-live="polite" aria-atomic="true" aria-label="Le total des likes de ce photographe est de 0"></div>
       <div class="price" id="photographer-price"></div>
     </div>
 
@@ -60,15 +60,15 @@
         <form>
           <div class="formData">
             <label id="prenom_label" for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" tabindex="0" aria-labelledby="prenom_label" aria-label="First name">
+            <input type="text" id="prenom" name="prenom" tabindex="0" aria-label="First name">
           </div>
           <div class="formData">
             <label id="nom_label" for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" aria-labelledby="nom_label" aria-label="Last name">
+            <input type="text" id="nom" name="nom"  aria-label="Last name">
           </div>
           <div class="formData">
             <label id="email_label" for="email">Email</label>
-            <input type="email" id="email" name="email" aria-labelledby="email_label" aria-label="Email">
+            <input type="email" id="email" name="email" aria-label="Email">
           </div>
           <div class="formData">
             <label id="message_label" for="message">Votre message</label>
@@ -78,7 +78,7 @@
         </form>
       </div>
     </div>
-    
+
     <!-- Modale de confirmation d'envoie -->
     <div id="contact-modal-end" class="bg-modal-end" role="dialog" aria-modal="true">
       <div class="modal-end">
@@ -90,8 +90,6 @@
         <button class="close-modal-end" tabindex="0" aria-label="Close Contact form">Fermer</button>
       </div>
     </div>
-    
-
   </main>
   <script type="module" src="src/photographer.js"></script>
 </body>

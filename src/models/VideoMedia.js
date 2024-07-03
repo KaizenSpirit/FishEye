@@ -25,8 +25,8 @@ class VideoMedia extends Media {
         <video class="vids" controls src="${this.video}" aria-label="Video de l'auteur : ${this.title}" title=" ${this.title}" tabindex="0"></video>
         <figcaption class="personal-photos">
           <p class="photo-details">${this.title}</p>
-          <div class="likes">
-            <p class="photo-details like-count" data-likes="${this.likes}">${this.likes}</p>
+          <div class="likes" role="button" aria-label="Bouton j'aime, nombre de likes pour ce media :${this.likes}">
+            <p class="photo-details like-count" data-likes="${this.likes}" role="status" aria-live="polite" aria-atomic="true">${this.likes}</p>
             <i class="fas fa-heart heart-icon like-button" data-id="${this.id}" data-liked="false" aria-label="likes"></i>
           </div>
         </figcaption>
@@ -35,7 +35,3 @@ class VideoMedia extends Media {
 }
 
 export default VideoMedia;
-
-
-
-

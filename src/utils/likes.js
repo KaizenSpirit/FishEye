@@ -3,18 +3,18 @@
  * Les boutons peuvent être activés via un clic ou en appuyant sur la touche "Entrée".
  */
 export function addLikeListeners() {
-  const likeButtons = document.querySelectorAll('.like-button');
-  likeButtons.forEach(button => {
-    button.setAttribute('tabindex', '0');
+  const likeContainers = document.querySelectorAll('.likes');
+  likeContainers.forEach(container => {
+    container.setAttribute('tabindex', '0');
     /**
      * Bascule l'état "like" d'un média, met à jour le nombre de likes et l'icône correspondante.
      * @param {Event} event - L'événement déclenché par un clic ou une pression sur la touche "Entrée".
      */
     const toggleLike = (event) => {
       event.stopPropagation(); 
-      const icon = event.target;
+      const icon = container.querySelector('.like-button');
       const liked = icon.getAttribute('data-liked') === 'true';
-      const likesSpan = icon.previousElementSibling;
+      const likesSpan = container.querySelector('.like-count');
       let likes = parseInt(likesSpan.innerText);
       if (liked) {
         likes -= 1;
@@ -26,10 +26,12 @@ export function addLikeListeners() {
         icon.classList.add('liked');
       }
       likesSpan.innerText = likes;
+      likesSpan.setAttribute('aria-label', `${likes} likes pour ce media`);  // Ajout de aria-label pour lire correctement le nombre
       updateTotalLikes();
     };
-    button.addEventListener('click', toggleLike);
-    button.addEventListener('keydown', (event) => {
+
+    container.addEventListener('click', toggleLike);
+    container.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         toggleLike(event);
       }
@@ -47,8 +49,12 @@ export function updateTotalLikes() {
     total += parseInt(like.innerText, 10);
   });
 
-  document.getElementById('total-likes').innerText = `${total}`;
+  const totalLikesElement = document.getElementById('total-likes');
+  const totalText = `${total}`;
+  totalLikesElement.innerText = totalText;
+  totalLikesElement.setAttribute('aria-label', `Total des likes du photographe ${totalText}`);
 }
+
 
 /**
  * Insère le prix du photographe dans l'élément de la page prévu à cet effet.

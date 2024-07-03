@@ -19,10 +19,10 @@ function createLightbox() {
   lightbox.id = 'lightbox';
   lightbox.classList.add('lightbox');
   lightbox.innerHTML = `
-    <div class="lightbox-content">
-      <span class="prev" tabindex="0" aria-label="Previous media">&#10094;</span>
-      <div class="media-container"></div>
-      <span class="next" tabindex="0" aria-label="Next media">&#10095;</span>
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <span class="prev" tabindex="0" aria-label="Previous media" role="button">&#10094;</span>
+      <div class="media-container" aria-live="polite"></div>
+      <span class="next" tabindex="0" aria-label="Next media" role="button">&#10095;</span>
     </div>
   `;
   return lightbox;
@@ -39,7 +39,7 @@ function showLightbox(index, retainFocus = false) {
   const media = mediaItems[currentMediaIndex];
   lightboxContent.innerHTML = `
     <div aria-label="Close dialog" class="lightbox-media">
-      <span class="close" tabindex="0" aria-label="Close dialog">&times;</span>
+      <span class="close" tabindex="0" aria-label="Close dialog" role="button">&times;</span>
       ${media.outerHTML}
       <div class="lightbox-title">${media.getAttribute('title')}</div>
     </div>
@@ -62,16 +62,19 @@ function showLightbox(index, retainFocus = false) {
  * @param {HTMLElement} element - L'élément dans lequel piéger le focus.
  */
 function trapFocus(element) {
-  const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), video');
   const firstFocusableElement = focusableElements[0];
   const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
   element.addEventListener('keydown', function(event) {
+    const activeElement = document.activeElement;
+
     if (event.key !== 'Tab') return;
 
-    if (event.shiftKey && document.activeElement === firstFocusableElement) {
+    if (event.shiftKey && activeElement === firstFocusableElement) {
       lastFocusableElement.focus();
       event.preventDefault();
-    } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+    } else if (!event.shiftKey && activeElement === lastFocusableElement) {
       firstFocusableElement.focus();
       event.preventDefault();
     }
@@ -137,6 +140,16 @@ function toggleGalleryFocus(enable) {
   const tabIndexValue = enable ? '0' : '-1';
   document.querySelectorAll('#photographer-images img, #photographer-images video').forEach(el => {
     el.setAttribute('tabindex', tabIndexValue);
+    el.addEventListener('click', function() {
+      const index = Array.prototype.indexOf.call(mediaItems, el);
+      showLightbox(index);
+    });
+    el.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        const index = Array.prototype.indexOf.call(mediaItems, el);
+        showLightbox(index);
+      }
+    });
   });
 }
 
@@ -162,7 +175,7 @@ function focusMediaElement() {
   
   if (videoElement) {
     videoElement.setAttribute('controls', 'controls');
-    videoElement.setAttribute('tabindex', '0'); 
+    videoElement.setAttribute('tabindex', '0'); // Assurer que la vidéo est focusable
     videoElement.focus();
   } else if (imageElement) {
     imageElement.setAttribute('tabindex', '0');
@@ -170,7 +183,7 @@ function focusMediaElement() {
   }
 }
 
-// Ajoute des événements pour les boutons de navigation de la lightbox.
+// Ajouter des écouteurs d'événements pour les boutons précédent et suivant
 [prevBtn, nextBtn].forEach(btn => {
   btn.addEventListener('click', btn === prevBtn ? showPrevMedia : showNextMedia);
   btn.addEventListener('keydown', (event) => {
@@ -181,3 +194,20 @@ function focusMediaElement() {
 });
 
 export { showLightbox, mediaItems };
+
+
+
+
+
+
+
+
+
+// Explications des modifications :
+
+//     aria-live="polite" : Permet d'annoncer les changements dynamiques de contenu.
+//     Ajout de role="dialog" et aria-modal="true" : Spécifie que le contenu de la lightbox est un dialogue modal.
+//     Ajout de role="button" pour les éléments interactifs : Spécifie que ces éléments sont des boutons pour les lecteurs d'écran.
+//     Gestion du focus améliorée : Ajout du focus sur les éléments multimédias (vidéos ou images) lorsqu'ils sont affichés.
+
+// Ces modifications devraient améliorer l'expérience utilisateur pour les personnes utilisant NVDA ou d'autres lecteurs d'écran.
